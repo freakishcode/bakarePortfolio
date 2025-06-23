@@ -1,0 +1,1334 @@
+/* Universal selector or Global styling */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root {
+  --width: 100%;
+
+  --dark-bg-color: #2b1a3d;
+  --dark-bg-color2: #150d1e;
+  --light-color: #fff;
+  --dark-color: #101010;
+
+  --yellow: #ff0;
+  --pink_like: #f0f;
+  --orange: orangered;
+
+  --gradient: linear-gradient(45deg, #ff0, #f0f);
+  --gradient2: linear-gradient(#dc3a23, #ff004f, #a14545);
+  --gradient3: linear-gradient(45deg, #ff0, #f0f, #00f, #0f0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-bg-color);
+  color: var(--light-color);
+  /* min-height: 300rem; */
+}
+
+.Nav-wrapper {
+  width: 100vw;
+  height: 13vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  border-bottom: 1px solid transparent;
+  border-image: var(--gradient3);
+  border-image-slice: 1;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  transition: 0.4s linear;
+}
+
+/* Navigation logo */
+.Nav-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .logo-icon {
+    width: 2rem;
+  }
+
+  .logo-text {
+    font-weight: bold;
+    font-family: "Quicksand", sans-serif;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Navigation link list */
+.nav-items {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+
+  a {
+    color: var(--light-color);
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 20px;
+    position: relative;
+  }
+
+  a:active {
+    background-image: var(--gradient);
+  }
+
+  a::before {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 20px;
+    border-top: 2px solid var(--pink_like);
+    border-left: 2px solid var(--pink_like);
+    border-radius: 20px;
+    left: 0;
+    top: 0;
+    transition: 0.5s;
+  }
+
+  a::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 20px;
+    border-right: 2px solid var(--yellow);
+    border-bottom: 2px solid var(--yellow);
+    border-radius: 20px;
+    right: 0;
+    bottom: 0;
+    transition: 0.5s;
+  }
+
+  a:hover::before {
+    left: -8px;
+    top: -8px;
+  }
+
+  a:hover::after {
+    right: -8px;
+    bottom: -8px;
+  }
+}
+
+.Nav-wrapper.sticky {
+  background: var(--dark-color);
+}
+
+.themeToggler {
+  cursor: pointer;
+  position: relative;
+
+  /* styling the switch theme button */
+  .icon {
+    width: 25px;
+    border-radius: 100%;
+    box-shadow: -4px -4px 25px 2px var(--pink_like),
+      4px 4px 25px 4px var(--yellow);
+  }
+}
+
+/* styling hover display on the Switch theme button */
+.themeToggler:after {
+  content: "Background Theme";
+  font-weight: bold;
+  position: absolute;
+  background-image: var(--gradient);
+  display: block;
+  padding: 1em;
+  color: var(--dark-color);
+  border-radius: 5px;
+  font-size: 0.75em;
+  bottom: 10%;
+  right: 100%;
+  white-space: nowrap;
+  transform: scale(0);
+  transition: ease-in-out 0.3s;
+}
+
+.themeToggler:hover::after {
+  transform: scale(1);
+}
+
+/* customizing the background color for javascript application*/
+.light {
+  background: var(--light-color);
+  color: var(--dark-color);
+}
+
+.Nav-wrapper.dark-grey {
+  background-color: var(--dark-bg-color);
+  border-bottom: 3px solid transparent;
+}
+
+/* At DESKTOP Screen Toggle button will be HIDDEN */
+.toggleBtn {
+  display: none;
+
+  /*  Customizing The LINES in button Toggler */
+  .line {
+    width: 100%;
+    height: 3px;
+    background-image: var(--gradient);
+    /* The spacing between lines */
+    margin-top: 3px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.intro-content {
+  padding-top: 8%;
+  width: var(--width);
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.Text-Header {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10%;
+  overflow: hidden;
+  /* background-color: var(--dark-color); */
+}
+
+.Text-Header::before {
+  position: absolute;
+  content: "";
+  height: 145px;
+  width: 145px;
+  border-radius: 50%;
+  left: 0;
+  top: 155px;
+  background: var(--dark-bg-color);
+  z-index: -1;
+  animation: object1 3s linear infinite;
+}
+
+@keyframes object1 {
+  50% {
+    top: 1%;
+  }
+}
+
+.Text-Header::after {
+  content: "";
+  height: 420px;
+  width: 420px;
+  border-radius: 50%;
+  position: absolute;
+  left: 9.5%;
+  top: 15%;
+  background: var(--dark-bg-color);
+  z-index: -2;
+  animation: object2 3s linear infinite;
+}
+
+@keyframes object2 {
+  50% {
+    left: 18%;
+    /* top: 12%; */
+  }
+}
+
+.dynamic-text {
+  line-height: 90px;
+  height: 90px;
+  overflow: hidden;
+
+  /* styling the animated h1 text */
+  h2 {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    top: 0;
+    animation: slide 12s steps(4) infinite;
+  }
+}
+
+@keyframes slide {
+  100% {
+    top: -360px;
+  }
+}
+
+.dynamic-text > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--dark-bg-color);
+  border-left: 2px solid var(--light-color);
+  animation: typing 3s steps(9) infinite;
+}
+
+@keyframes typing {
+  40%,
+  60% {
+    left: calc(100% + 30px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.hire-me {
+  margin-top: 2rem;
+  width: 9rem;
+  padding: 1rem;
+  color: var(--light-color);
+  cursor: pointer;
+
+  background-color: var(--dark-bg-color);
+  border-radius: 7px;
+
+  position: relative;
+  transition: ease-in-out 0.3s;
+}
+
+.hire-me::before,
+.hire-me::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(
+    45deg,
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  background-size: 400%;
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+  z-index: -1;
+  border-radius: 7px;
+  animation: 20s spinning linear infinite;
+}
+
+@keyframes spinning {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* for the blur effect */
+.hire-me::after {
+  filter: blur(40px);
+}
+
+.hire-me:hover {
+  scale: 1.1;
+  color: var(--dark-bg-color2);
+}
+
+/* when clicked on */
+.hire-me:active {
+  transform: scale(0.92);
+  -ms-transform: scale(0.92);
+  -webkit-transform: scale(0.92);
+}
+
+.ProfilePic {
+  width: 45%;
+  height: 80%;
+  position: absolute;
+  bottom: 0;
+  right: 100px;
+
+  img {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+  }
+}
+
+.me {
+  transform: rotateY(180deg);
+}
+
+.ProfilePic:hover .shape {
+  bottom: 40px;
+}
+
+.ProfilePic:hover .me {
+  left: 45%;
+}
+
+/* The About section part */
+.About {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 0.5rem; */
+  padding: 1rem 2rem;
+  /* border: 2px solid orangered; */
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* General styling for: home, about, skill, project, service & contact */
+header {
+  padding: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+/* styling header color for light mode using JS*/
+header.header-bg-light {
+  background: var(--dark-bg-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.summary-about-me {
+  padding: 0 2rem;
+  /* border: 2px solid orange; */
+
+  .summary {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+
+    p {
+      /* text-wrap: balance; */
+      font-size: 1.2rem;
+    }
+  }
+}
+.RESUME {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 1.5rem 0;
+  /* border: 2px solid orange; */
+
+  .Ola-card {
+    width: 230px;
+    height: 260px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .Ola-card .front-face {
+    background: url("./assets/Profile_picture/Front-camera-of-me.png");
+  }
+
+  .Ola-card .back-face {
+    transform: rotateY(180deg);
+    background: url("./assets/Profile_picture/Front-camera-of-me.png");
+    /* filter: blur(4px); */
+  }
+
+  .back-face-backdrop {
+    width: 100%;
+    height: 100%;
+    padding: 0.15rem;
+    border-radius: 50%;
+    background: rgb(0, 0, 0, 0.6);
+  }
+
+  .Ola-card .front-face,
+  .Ola-card .back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    backface-visibility: hidden;
+    transition: 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 5px 5px 10px black; */
+  }
+
+  .Ola-card .back-face h2 {
+    font-size: 32px;
+    margin-top: 30%;
+  }
+
+  .Ola-card .back-face p {
+    color: yellow;
+    font-size: 18px;
+  }
+
+  .Ola-card .icons {
+    margin-top: 20px;
+  }
+
+  .Ola-card .icons i {
+    cursor: pointer;
+    margin: 0 5px;
+    color: #e74723;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+
+  .Ola-card .icons i:hover {
+    color: #fff;
+    background: #e74723;
+  }
+
+  .Ola-card:hover > .back-face {
+    transform: rotateY(0);
+  }
+
+  .Ola-card:hover > .front-face {
+    transform: rotateY(-180deg);
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* general */
+  .sub-title {
+    font-weight: bold;
+    color: orangered;
+    font-size: 1.2rem;
+  }
+}
+
+.PERSONAL-INFO {
+  .profile-description {
+    p {
+      padding: 0.35rem 0;
+    }
+  }
+  /* styling myCV download button */
+  .Download-CV {
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    /* border-radius: 10px; */
+    width: 180px;
+    padding: 0.5rem;
+    box-shadow: 7px 9px 17px #101010;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #ff0, #f0f) 1;
+    background-color: var(--dark-bg-color);
+    color: var(--light-color);
+    transition: ease-in-out 0.3s;
+
+    /* download icon */
+    .cv-icon {
+      color: var(--light-color);
+    }
+  }
+}
+
+.Download-CV:hover {
+  background: var(--dark-color);
+  scale: 1.1;
+}
+
+.Download-CV:active {
+  scale: 0.92;
+}
+
+.Edu-And-Exp {
+  .school {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    div {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* styling My social medial links */
+.social-Media-Link {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+
+  a {
+    padding: 0 1rem;
+  }
+
+  a i {
+    transition: all 0.5s;
+  }
+
+  a:hover i {
+    scale: 1.4;
+  }
+
+  a:active i {
+    transform: scale(0.92);
+    -ms-transform: scale(0.92);
+    -webkit-transform: scale(0.92);
+  }
+
+  /* Coloring the link icons */
+  .fa-facebook {
+    color: #000ff0;
+  }
+
+  .fa-github {
+    color: var(--dark-color);
+  }
+
+  .fa-instagram {
+    color: orange;
+  }
+
+  .fa-linkedin {
+    color: grey;
+  }
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  /* border: 2px solid red; */
+}
+
+.SkillBoxContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 5rem;
+
+  width: 100%;
+  height: 70dvh;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .coding-skill {
+    /* background-color: red; */
+    cursor: pointer;
+  }
+
+  .skill-name {
+    display: flex;
+    gap: 0.55rem;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 5px 0;
+
+    .icons {
+      width: 40px;
+      height: 40px;
+    }
+
+    .skill-title {
+      padding-top: 10px;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .skill-bar {
+    height: 5px;
+    background-color: #282828;
+    border-radius: 3px;
+  }
+
+  .skill-percentage {
+    position: relative;
+    color: orangered;
+    height: 5px;
+    background-image: var(--gradient);
+    border-radius: 3px;
+    animation: skillAnimation 2.5s 1;
+  }
+}
+
+.skill-percentage::before {
+  content: attr(percentage);
+  position: absolute;
+  padding: 4px 6px;
+  background: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  top: -35px;
+  right: 0;
+  transform: translateX(50%);
+}
+
+.skill-percentage::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background: #fff;
+  font-size: 12px;
+  top: -20px;
+  right: 0;
+  border-radius: 2px;
+  transform: translateX(50%) rotate(45deg);
+}
+
+@keyframes skillAnimation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* My project Part */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  place-items: center;
+  gap: 1.7rem;
+  padding: 8rem 2.5rem;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
+
+  /* video container */
+  .videoLink {
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.9s;
+    border: 1px solid orange;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    /* customizing the video */
+    video {
+      width: 250px;
+      aspect-ratio: 16/10;
+      border-radius: 10px;
+      border-bottom: 1px solid orange;
+    }
+
+    /* video title */
+    h2 {
+      padding: 1rem;
+      color: orangered;
+    }
+
+    h2:hover {
+      color: yellow;
+    }
+  }
+}
+
+/* video container on hover*/
+.videoLink:hover {
+  scale: 1.2;
+}
+
+/* video container when clicked on  */
+.videoLink:active {
+  scale: 0.92;
+}
+
+/* styling of services offered by me */
+.ServiceContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  place-items: center;
+  gap: 2rem;
+  padding: 4rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.service-box {
+  width: 350px;
+  height: 350px;
+  text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 1rem;
+  color: var(--light-color);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.9s;
+  border: 1px solid black;
+  box-shadow: 5px 5px 10px black;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  h3 {
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 1rem;
+  }
+
+  p {
+    color: #fff;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+}
+
+.service-box:hover {
+  scale: 0.95;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+}
+
+/* animation for the service boxes */
+.animate-service {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.showAnimate {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.service-box:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+.service-box:nth-child(3) {
+  transition-delay: 400ms;
+}
+
+/* Styling of the contact Me Part */
+.contact-me {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-grow: 1;
+
+  .my-details {
+    /* background-color: #10375c; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    cursor: pointer;
+
+    h4 {
+      color: var(--orange);
+    }
+  }
+}
+
+.my-details :is(.email, .phone-no, .address) {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.my-details :is(.email h3, .phone-no h3, .address h3) {
+  color: var(--orange);
+}
+
+.my-details span > img {
+  width: 50px;
+  padding: 0.5em;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+}
+
+.client-form {
+  /* background-color: #10375c; */
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "input1 input2"
+    "textarea textarea"
+    "send send";
+  gap: 1rem;
+
+  /* Name field */
+  .clientName {
+    grid-area: input1;
+    background-color: #dddd;
+  }
+
+  /* Email field */
+  .clientEmail {
+    grid-area: input2;
+    background-color: #dddd;
+  }
+
+  /* Message field */
+  #message-text {
+    grid-area: textarea;
+    width: 500px;
+    height: 45vh;
+    background-color: #dddd;
+  }
+
+  .clientName,
+  .clientEmail,
+  #message-text,
+  .form-submit-btn {
+    padding: 0.5rem;
+    border-radius: 10px;
+    line-height: 1rem;
+    border: 2px solid var(--orange);
+    font-size: 1rem;
+    /* caret-color: used to change the change the color of the text cursor */
+    caret-color: red;
+  }
+}
+
+.clientName:focus,
+.clientEmail:focus,
+#message-text:focus {
+  color: var(--light-color);
+  background-color: #282828;
+}
+
+.clientName::placeholder,
+.clientEmail::placeholder,
+#message-text::placeholder {
+  text-align: center;
+}
+#message-text::placeholder {
+  padding: 4rem;
+}
+
+.form-submit-btn {
+  margin-top: 1rem;
+  grid-area: send;
+  width: 200px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--orange);
+  color: #fff;
+  box-shadow: 7px 7px 5px #101010;
+  transition: ease-in-out 0.3s;
+
+  img {
+    width: 20px;
+  }
+}
+
+.form-submit-btn:hover {
+  scale: 1.1;
+  background-color: var(--dark-color);
+}
+
+.form-submit-btn:active {
+  scale: 0.92;
+  border: none;
+  outline: none;
+  background-color: #62487f;
+}
+
+.modal {
+  /* Modal background overlay */
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(225, 225, 225, 0.5);
+
+    position: fixed;
+    inset: 0;
+    z-index: 888;
+
+    /* Not making the overlay visible yet */
+    display: none;
+  }
+
+  /* modal content */
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    scale: 0;
+    background-color: #fff;
+    width: 300px;
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 5px 7px 5px black;
+    z-index: 999;
+    transition: all 300ms ease-in-out;
+  }
+
+  /* header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 2px solid #101010;
+    background-color: var(--dark-bg-color);
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+  }
+
+  /* styling model content */
+  .model-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    font-weight: bold;
+    color: #101010;
+
+    /* styling the surrounding of the check icon */
+    .modal-body-icon {
+      border: 2px solid var(--dark-bg-color);
+      border-radius: 50%;
+      width: 20%;
+      padding: 0.55rem;
+
+      /* styling check icon */
+      .fa-check {
+        color: var(--dark-bg-color2);
+      }
+    }
+  }
+}
+
+/* styling both exit buttons */
+.closeBtn,
+.okayBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* 1st exit button */
+.closeBtn {
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  padding: 0.25rem;
+  width: 30px;
+  border-radius: 50%;
+}
+
+/* 2nd exit button */
+.okayBtn {
+  padding: 0.55rem;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  width: 10rem;
+  border-radius: 10px;
+  background-color: var(--dark-bg-color);
+}
+
+.okayBtn:hover {
+  background-color: var(--dark-bg-color2);
+}
+
+/* applying js to the modal background overlay  */
+.modal.action .overlay {
+  /* making the overlay visible onClick */
+  display: block;
+}
+
+/* applying js to the modal content  */
+.modal.action .popup-container {
+  translate: -50% -50%;
+  scale: 1;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #fff;
+  background-color: var(--dark-color);
+  border-top: 1px solid transparent;
+  border-image: var(--gradient3);
+  border-image-slice: 1;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  transition: 0.4s linear;
+
+  /* Coloring the footer github link icons */
+  .social-Media-Link .fa-github {
+    background-color: inherit;
+    color: var(--light-color);
+  }
+}
+
+/* customizing footer for background switch theme */
+footer.footer-bgColor {
+  background-color: var(--dark-bg-color);
+  border-top: 3px solid transparent;
+}
+
+/* applying transition to page when visited using js  */
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  /* transform: translateY(-100%); */
+  scale: 0.9;
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  /* transform: translateY(0); */
+  scale: 1;
+}
+
+/* Media Query: Mobile friendly */
+@media (max-width: 66rem) {
+  .toggleBtn {
+    display: block;
+    z-index: 5;
+    border-radius: 0.5rem;
+    /* The spacing around the lines */
+    width: 2.5rem;
+    height: 2.2rem;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    cursor: pointer;
+    margin: auto 0;
+    position: absolute;
+    top: 25%;
+    left: 85%;
+    transition: 0.3s;
+  }
+
+  /* Customizing my list items  in media query*/
+  .nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(444deg, #2b1a3d, #5b146f, #ff009c);
+    width: 60%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 5;
+    padding-top: 20%;
+    transition: 0.3s;
+
+    /* turn off transition for my nav list on mobile*/
+    a:hover::before {
+      left: 0px;
+      top: 0px;
+    }
+
+    a:hover::after {
+      right: 0px;
+      bottom: 0px;
+    }
+  }
+
+  /* animating the line bar to change to X-iCON in toggle-icon */
+  .toggleBtn.show .line:nth-child(1) {
+    transform: translateY(3px) rotate(45deg);
+  }
+  .toggleBtn.show .line:nth-child(2) {
+    opacity: 0;
+  }
+  .toggleBtn.show .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Enabling the navbar */
+  .show {
+    right: 0;
+  }
+
+  .Text-Header {
+    margin-top: 27%;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0 10% 5%;
+  }
+
+  .Text-Header::after {
+    top: 13%;
+  }
+
+  .hire-me {
+    padding: 12px;
+    width: 7rem;
+  }
+
+  .RESUME {
+    gap: 2rem;
+  }
+
+  .ProfilePic {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+  }
+
+  /* turn off transition for profile picture on mobile */
+  .ProfilePic:hover .shape {
+    bottom: 0px;
+  }
+
+  .ProfilePic:hover .me {
+    left: 50%;
+  }
+
+  .SkillBoxContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* turn off transition for my social media link on mobile */
+  .social-Media-Link a:hover i {
+    scale: none;
+  }
+
+  /* My project Part */
+  .cards {
+    gap: 3rem;
+    padding: 2.5rem;
+  }
+
+  .box {
+    transition: none;
+  }
+
+  .box video {
+    width: 200px;
+    height: 200px;
+  }
+
+  .box:hover {
+    scale: none;
+  }
+
+  .box:active {
+    scale: none;
+  }
+
+  /* prevent animation on mobile phones */
+  .hidden {
+    transition: none;
+  }
+
+  /* Styling of Services Offered */
+  .Boxes > div {
+    width: 300px;
+    height: 300px;
+  }
+
+  .Boxes > div p {
+    padding: 0.5rem;
+  }
+
+  .Boxes > div:hover {
+    scale: none;
+  }
+
+  .animate {
+    transform: none;
+    transition: none;
+  }
+
+  /* styling of Contact Me Part */
+  .contact-me {
+    gap: 0;
+  }
+
+  .my-details {
+    gap: 0.7rem;
+  }
+
+  .client-form {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "input1"
+      "input2"
+      "textarea"
+      "send";
+  }
+
+  /* customizing my Footer */
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  footer .logo {
+    display: none;
+  }
+}
