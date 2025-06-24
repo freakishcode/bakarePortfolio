@@ -459,12 +459,12 @@ header.header-bg-light {
   }
 
   .Ola-card .front-face {
-    background: url("./assets/Profile_picture/Front-camera-of-me.png");
+    background: url("./assets/Profile_picture/Snapchat-1680186887.png");
   }
 
   .Ola-card .back-face {
     transform: rotateY(180deg);
-    background: url("./assets/Profile_picture/Front-camera-of-me.png");
+    background: url("./assets/Profile_picture/Snapchat-1680186887.png");
     /* filter: blur(4px); */
   }
 
