@@ -5,7 +5,7 @@
         $clientName = trim($_POST['username']);
         $clientEmail = trim($_POST['email']);
         $clientMessage = trim($_POST['msg']);
-        $toEmail = 'ajibolaolayemibakare@yahoo.com';
+        $toEmail = 'ajibolabakare@gmail.com';
 
         $mailHeaders =
         "From" . $clientName .

@@ -1048,16 +1048,9 @@ header.header-bg-light {
     color: #101010;
 
     /* styling the surrounding of the check icon */
-    .modal-body-icon {
-      border: 2px solid var(--dark-bg-color);
-      border-radius: 50%;
-      width: 20%;
-      padding: 0.55rem;
-
-      /* styling check icon */
-      .fa-check {
-        color: var(--dark-bg-color2);
-      }
+    img {
+      width: 50px;
+      height: auto;
     }
   }
 }
@@ -1093,7 +1086,7 @@ header.header-bg-light {
 }
 
 .okayBtn:hover {
-  background-color: var(--dark-bg-color2);
+  background-color: rgb(43, 105, 69);
 }
 
 /* applying js to the modal background overlay  */
