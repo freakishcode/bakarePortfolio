@@ -805,8 +805,8 @@ header.header-bg-light {
   box-shadow: 5px 5px 10px black;
 
   img {
-    width: 150px;
-    height: 150px;
+    width: 8rem;
+    height: 8rem;
   }
 
   h3 {
@@ -821,6 +821,7 @@ header.header-bg-light {
     color: #fff;
     margin-top: 1rem;
     padding: 1rem;
+    font-size: 1rem;
   }
 }
 
@@ -917,7 +918,7 @@ header.header-bg-light {
   /* Message field */
   #message-text {
     grid-area: textarea;
-    width: 500px;
+    width: 50vw;
     height: 45vh;
     background-color: #dddd;
   }
@@ -1143,7 +1144,7 @@ footer.footer-bgColor {
 }
 
 /* Media Query: Mobile friendly */
-@media (max-width: 66rem) {
+@media (max-width: 40rem) {
   .toggleBtn {
     display: block;
     z-index: 5;
@@ -1242,6 +1243,13 @@ footer.footer-bgColor {
     left: 50%;
   }
 
+  .summary {
+    p {
+      /* text-wrap: balance; */
+      font-size: 0.39rem;
+    }
+  }
+
   .SkillBoxContainer {
     display: grid;
     grid-template-columns: 1fr;
@@ -1300,6 +1308,20 @@ footer.footer-bgColor {
     transition: none;
   }
 
+  .service-box {
+    width: 300px;
+    height: 300px;
+
+    p {
+      font-size: 0.65rem;
+    }
+  }
+
+  .animate-service {
+    transform: none;
+    transition: none;
+  }
+
   /* styling of Contact Me Part */
   .contact-me {
     gap: 0;
@@ -1310,14 +1332,16 @@ footer.footer-bgColor {
   }
 
   .client-form {
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "input1"
-      "input2"
-      "textarea"
-      "send";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* Message field */
+    #message-text {
+      width: 15rem;
+      height: 30vh;
+    }
   }
 
   /* customizing my Footer */
