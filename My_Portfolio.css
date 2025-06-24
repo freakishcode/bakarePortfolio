@@ -306,6 +306,7 @@ body {
   padding: 1rem;
   color: var(--light-color);
   cursor: pointer;
+  text-align: center;
 
   background-color: var(--dark-bg-color);
   border-radius: 7px;
@@ -622,23 +623,6 @@ header.header-bg-light {
     transform: scale(0.92);
     -ms-transform: scale(0.92);
     -webkit-transform: scale(0.92);
-  }
-
-  /* Coloring the link icons */
-  .fa-facebook {
-    color: #000ff0;
-  }
-
-  .fa-github {
-    color: var(--dark-color);
-  }
-
-  .fa-instagram {
-    color: orange;
-  }
-
-  .fa-linkedin {
-    color: grey;
   }
 }
 
@@ -1242,6 +1226,12 @@ footer.footer-bgColor {
     left: 50%;
   }
 
+  /* General styling for: home, about, skill, project, service & contact */
+  header {
+    background: var(--gradient3);
+    background-clip: text;
+  }
+
   .summary {
     p {
       /* text-wrap: balance; */
@@ -1255,6 +1245,17 @@ footer.footer-bgColor {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  /* styling My social medial links */
+  .social-Media-Link {
+    margin-top: 2.4rem;
+
+    a img {
+      width: 2.5rem;
+      height: auto;
+      transition: none;
+    }
   }
 
   .SkillBoxContainer {
