@@ -572,7 +572,7 @@ header.header-bg-light {
 
     /* download icon */
     .cv-icon {
-      color: var(--light-color);
+      size: 1px;
     }
   }
 }
@@ -608,15 +608,15 @@ header.header-bg-light {
     padding: 0 1rem;
   }
 
-  a i {
+  a img {
     transition: all 0.5s;
   }
 
-  a:hover i {
+  a:hover img {
     scale: 1.4;
   }
 
-  a:active i {
+  a:active img {
     transform: scale(0.92);
     -ms-transform: scale(0.92);
     -webkit-transform: scale(0.92);
@@ -645,7 +645,6 @@ header.header-bg-light {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   /* border: 2px solid red; */
 }
 
@@ -653,15 +652,15 @@ header.header-bg-light {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  padding: 1rem 5rem;
+  padding: 0 1rem;
 
   width: 100%;
   height: 70dvh;
-  padding: 1rem;
   background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid yellow;
 
   .coding-skill {
-    /* background-color: red; */
+    background-color: red;
     cursor: pointer;
   }
 
@@ -734,6 +733,11 @@ header.header-bg-light {
 }
 
 /* My project Part */
+/* .My-Project {
+  border: 2px solid red;
+  padding-top: 5rem;
+} */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1253,8 +1257,9 @@ footer.footer-bgColor {
   .SkillBoxContainer {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
-    margin-bottom: 5rem;
+    gap: 0.11rem;
+    padding-top: 0.11rem;
+    margin-bottom: 1rem;
   }
 
   /* turn off transition for my social media link on mobile */
@@ -1263,6 +1268,11 @@ footer.footer-bgColor {
   }
 
   /* My project Part */
+  .My-Project {
+    border: 2px solid red;
+    margin-top: 5rem;
+  }
+
   .cards {
     gap: 3rem;
     padding: 2.5rem;
