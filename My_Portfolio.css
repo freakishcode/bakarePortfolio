@@ -645,7 +645,7 @@ header.header-bg-light {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
+  padding: 2rem;
   /* border: 2px solid red; */
 }
 
@@ -1254,6 +1254,7 @@ footer.footer-bgColor {
     display: grid;
     grid-template-columns: 1fr;
     gap: 15px;
+    margin-bottom: 5rem;
   }
 
   /* turn off transition for my social media link on mobile */
