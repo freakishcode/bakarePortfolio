@@ -570,11 +570,15 @@
           </div>
 
           <!-- Get in touch by direct Email Messaging -->
-          <form class="client-form" action="./test6.php" method="POST">
+          <form
+            class="client-form"
+            action="https://formsubmit.co/el/fobelu"
+            method="POST"
+          >
             <input
               class="clientName"
               type="text"
-              name="username"
+              name="Name"
               placeholder="Enter Your Name"
               minlength="3"
               required
@@ -582,22 +586,22 @@
 
             <input
               class="clientEmail"
-              type="text"
-              name="email"
+              type="email"
+              name="Email"
               placeholder="Your Email address"
               minlength="5"
               required
             />
 
             <textarea
-              name="msg"
+              name="Message"
               id="message-text"
               minlength="5"
               placeholder="Please Leave a message"
               required
             ></textarea>
 
-            <button class="form-submit-btn" name="send" type="submit">
+            <button class="form-submit-btn" type="submit">
               <span>Send Message</span>
               <img src="./assets/Icons/icons8-sent-48.png" alt="send icon" />
             </button>

@@ -25,6 +25,7 @@
   --gradient: linear-gradient(45deg, #ff0, #f0f);
   --gradient2: linear-gradient(#dc3a23, #ff004f, #a14545);
   --gradient3: linear-gradient(45deg, #ff0, #f0f, #00f, #0f0);
+  --gradient4: linear-gradient(45deg, #ff0, #00f, #0f0);
 }
 
 html {
@@ -1203,6 +1204,7 @@ footer.footer-bgColor {
   }
 
   .hire-me {
+    font-size: 1rem;
     padding: 12px;
     width: 7rem;
   }
@@ -1228,7 +1230,7 @@ footer.footer-bgColor {
 
   /* General styling for: home, about, skill, project, service & contact */
   header {
-    background: var(--gradient3);
+    background: var(--gradient4);
     background-clip: text;
   }
 
@@ -1263,7 +1265,7 @@ footer.footer-bgColor {
     grid-template-columns: 1fr;
     gap: 0.11rem;
     padding-top: 0.11rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   /* turn off transition for my social media link on mobile */
