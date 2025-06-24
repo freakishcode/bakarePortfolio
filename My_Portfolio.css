@@ -452,7 +452,7 @@ header.header-bg-light {
   /* border: 2px solid orange; */
 
   .Ola-card {
-    width: 230px;
+    width: 250px;
     height: 260px;
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -1256,6 +1256,14 @@ footer.footer-bgColor {
     }
   }
 
+  .Edu-And-Exp {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .SkillBoxContainer {
     display: grid;
     grid-template-columns: 1fr;
@@ -1350,9 +1358,14 @@ footer.footer-bgColor {
     align-items: center;
     flex-direction: column;
 
+    .clientName,
+    .clientEmail,
+    #message-text {
+      width: 19rem;
+    }
+
     /* Message field */
     #message-text {
-      width: 15rem;
       height: 30vh;
     }
   }
