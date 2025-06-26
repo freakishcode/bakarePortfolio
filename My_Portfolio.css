@@ -25,7 +25,7 @@
   --gradient: linear-gradient(45deg, #ff0, #f0f);
   --gradient2: linear-gradient(#dc3a23, #ff004f, #a14545);
   --gradient3: linear-gradient(45deg, #ff0, #f0f, #00f, #0f0);
-  --gradient4: linear-gradient(35deg, #ff0, #00f, #0f0);
+  --gradient4: linear-gradient(50deg, #ff0, #fff, #0f0);
 }
 
 html {
@@ -604,12 +604,12 @@ header.header-bg-light {
 
 /* styling My social medial links */
 .social-Media-Link {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 
   a {
-    padding: 0 1rem;
+    padding: 0 0.45rem;
   }
 
   a img {
