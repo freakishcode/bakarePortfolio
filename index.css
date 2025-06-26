@@ -799,8 +799,8 @@ header.header-bg-light {
     height: 8rem;
   }
 
-  h3 {
-    background: var(--gradient);
+  h2 {
+    background: var(--gradient2);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -809,7 +809,7 @@ header.header-bg-light {
 
   p {
     color: #fff;
-    margin-top: 1rem;
+    margin-top: 0.88rem;
     padding: 1rem;
     font-size: 1rem;
   }
