@@ -605,7 +605,7 @@ header.header-bg-light {
 .social-Media-Link {
   margin-top: 1rem;
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
 
   a {
     padding: 0 0.45rem;
@@ -639,8 +639,9 @@ header.header-bg-light {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   padding: 0 1rem;
+  border-radius: 1rem;
 
-  width: 100%;
+  width: 100dvw;
   height: 80dvh;
   background-color: rgba(0, 0, 0, 0.2);
   /* border: 1px solid yellow; */
@@ -800,7 +801,7 @@ header.header-bg-light {
   }
 
   h2 {
-    background: var(--gradient2);
+    background: var(--gradient);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1234,7 +1235,7 @@ footer.footer-bgColor {
 
   /* General styling for: home, about, skill, project, service & contact */
   header {
-    background: var(--orange);
+    background: rgb(78, 78, 212);
     background-clip: text;
   }
 
@@ -1270,11 +1271,13 @@ footer.footer-bgColor {
   }
 
   .SkillBoxContainer {
-    display: grid;
+    width: 92%;
+    height: 90dvh;
+
     grid-template-columns: 1fr;
     gap: 0.11rem;
     padding: 1rem 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
   }
 
   /* turn off transition for my social media link on mobile */
