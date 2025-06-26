@@ -25,7 +25,6 @@
   --gradient: linear-gradient(45deg, #ff0, #f0f);
   --gradient2: linear-gradient(#dc3a23, #ff004f, #a14545);
   --gradient3: linear-gradient(45deg, #ff0, #f0f, #00f, #0f0);
-  --gradient4: linear-gradient(50deg, #ff0, #fff, #0f0);
 }
 
 html {
@@ -1209,6 +1208,11 @@ footer.footer-bgColor {
     width: 7rem;
   }
 
+  /* for the blur effect */
+  .hire-me::after {
+    filter: blur(9px);
+  }
+
   .RESUME {
     gap: 2rem;
   }
@@ -1230,7 +1234,7 @@ footer.footer-bgColor {
 
   /* General styling for: home, about, skill, project, service & contact */
   header {
-    background: var(--gradient4);
+    background: var(--orange);
     background-clip: text;
   }
 
