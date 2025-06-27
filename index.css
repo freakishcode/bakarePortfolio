@@ -487,7 +487,7 @@ header.header-bg-light {
     width: 100%;
     height: 100%;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 60%;
     background-size: cover;
     background-position: center;
     backface-visibility: hidden;
@@ -497,8 +497,8 @@ header.header-bg-light {
   }
 
   .Ola-card .back-face h2 {
-    font-size: 32px;
-    margin-top: 30%;
+    font-size: 30px;
+    margin-top: 4rem;
   }
 
   .Ola-card .back-face p {
@@ -507,7 +507,7 @@ header.header-bg-light {
   }
 
   .Ola-card .icons {
-    margin-top: 20px;
+    padding: 1rem;
   }
 
   .Ola-card .icons i {
@@ -612,14 +612,10 @@ header.header-bg-light {
 
 /* styling My social medial links */
 .social-Media-Link {
+  /* border: 1px solid yellow; */
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
-
-  a {
-    padding: 0 0.45rem;
-  }
 
   a img {
     transition: all 0.5s;
@@ -1108,12 +1104,13 @@ footer {
   border-image-slice: 1;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
   transition: 0.4s linear;
-
-  /* Coloring the footer github link icons */
-  .social-Media-Link .fa-github {
-    background-color: inherit;
-    color: var(--light-color);
-  }
+}
+/* Customizing the footer link icons */
+.footer-social-Media-Link {
+  /* border: 1px solid red; */
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.55rem;
 }
 
 /* customizing footer for background switch theme */
@@ -1266,10 +1263,6 @@ footer.footer-bgColor {
 
   /* styling My social medial links */
   .social-Media-Link {
-    a {
-      padding: 0 1rem;
-    }
-
     a img {
       width: 2.5rem;
       height: auto;
@@ -1385,9 +1378,5 @@ footer.footer-bgColor {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.75rem;
-  }
-
-  footer .logo {
-    display: none;
   }
 }
