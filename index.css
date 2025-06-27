@@ -1128,7 +1128,7 @@ footer.footer-bgColor {
 }
 
 /* Media Query: Mobile friendly */
-@media (max-width: 40rem) {
+@media (min-width: 20rem) and (max-width: 64rem) {
   .toggleBtn {
     display: block;
     z-index: 5;
