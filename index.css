@@ -433,6 +433,7 @@ header.header-bg-light {
   /* border: 2px solid orange; */
 
   .summary {
+    /* border: 2px solid orange; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -448,10 +449,12 @@ header.header-bg-light {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+
   flex-wrap: wrap;
   gap: 5rem;
-  padding: 1.5rem 0;
-  /* border: 2px solid orange; */
+  padding: 1rem;
+  /* border: 1px solid orange; */
 
   .Ola-card {
     width: 250px;
@@ -550,11 +553,14 @@ header.header-bg-light {
 }
 
 .PERSONAL-INFO {
-  .profile-description {
-    p {
-      padding: 0.35rem 0;
-    }
+  display: block;
+  /* border: 1px solid yellow; */
+
+  .profile-description > p {
+    display: block;
+    padding: 0.35rem 0;
   }
+
   /* styling myCV download button */
   .Download-CV {
     margin-top: 1.8rem;
@@ -591,20 +597,21 @@ header.header-bg-light {
 }
 
 .Edu-And-Exp {
-  .school {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  /* border: 1px solid red; */
+  display: block;
 
-    div {
-      font-size: 1.2rem;
-    }
+  section {
+    margin: auto;
+    padding: 0.55rem 0;
   }
+  /* justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem; */
 }
 
 /* styling My social medial links */
 .social-Media-Link {
-  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
 
@@ -1237,28 +1244,22 @@ footer.footer-bgColor {
 
   /* General styling for: home, about, skill, project, service & contact */
   header {
-    background: rgb(78, 78, 212);
+    /* background: rgb(78, 78, 212); */
     background-clip: text;
   }
 
-  .summary-about-me {
-    padding: 0 3.5rem;
+  .summary {
+    padding: 0 1rem;
   }
 
-  .summary {
-    p {
-      /* text-wrap: balance; */
-      font-size: 0.29rem;
-      font-weight: lighter;
-    }
+  .Ola-card {
+    display: none;
   }
 
   .Edu-And-Exp {
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    .sections {
+      font-size: 1.2rem;
+    }
   }
 
   /* styling My social medial links */
