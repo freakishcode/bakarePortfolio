@@ -552,9 +552,14 @@ header.header-bg-light {
   }
 }
 
+.PERSONAL-INFO,
+.Edu-And-Exp {
+  height: 40dvh;
+}
+
 .PERSONAL-INFO {
   display: block;
-  /* border: 1px solid yellow; */
+  border: 1px solid yellow;
 
   .profile-description > p {
     display: block;
@@ -597,23 +602,20 @@ header.header-bg-light {
 }
 
 .Edu-And-Exp {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   display: block;
 
   section {
-    margin: auto;
     padding: 0.55rem 0;
   }
-  /* justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem; */
 }
 
 /* styling My social medial links */
 .social-Media-Link {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
 
   a {
     padding: 0 0.45rem;
@@ -1256,16 +1258,14 @@ footer.footer-bgColor {
     display: none;
   }
 
+  .PERSONAL-INFO,
   .Edu-And-Exp {
-    .sections {
-      font-size: 1.2rem;
-    }
+    width: 90%;
+    height: auto;
   }
 
   /* styling My social medial links */
   .social-Media-Link {
-    margin-top: 1.5rem;
-
     a {
       padding: 0 1rem;
     }
