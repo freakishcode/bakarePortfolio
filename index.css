@@ -204,6 +204,7 @@ body {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  /* border: 1px solid red; */
 }
 
 .Text-Header {
@@ -647,6 +648,7 @@ header.header-bg-light {
   /* border: 1px solid yellow; */
 
   .coding-skill {
+    width: 100%;
     /* background-color: red; */
     cursor: pointer;
   }
@@ -656,7 +658,7 @@ header.header-bg-light {
     gap: 0.55rem;
     font-size: 18px;
     font-weight: 700;
-    margin: 5px 0;
+    margin-top: 5px;
 
     .icons {
       width: 40px;
@@ -670,7 +672,7 @@ header.header-bg-light {
   }
 
   .skill-bar {
-    height: 5px;
+    height: 6px;
     background-color: #282828;
     border-radius: 3px;
   }
@@ -1261,7 +1263,11 @@ footer.footer-bgColor {
 
   /* styling My social medial links */
   .social-Media-Link {
-    margin-top: 2.4rem;
+    margin-top: 1.5rem;
+
+    a {
+      padding: 0 1rem;
+    }
 
     a img {
       width: 2.5rem;
@@ -1283,12 +1289,6 @@ footer.footer-bgColor {
   /* turn off transition for my social media link on mobile */
   .social-Media-Link a:hover i {
     scale: none;
-  }
-
-  /* My project Part */
-  .My-Project {
-    /* border: 2px solid red; */
-    margin-top: 3rem;
   }
 
   .cards {
