@@ -559,7 +559,7 @@ header.header-bg-light {
 
 .PERSONAL-INFO {
   display: block;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
 
   .profile-description > p {
     display: block;
@@ -602,7 +602,7 @@ header.header-bg-light {
 }
 
 .Edu-And-Exp {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: block;
 
   section {
