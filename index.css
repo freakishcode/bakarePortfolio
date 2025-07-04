@@ -727,6 +727,7 @@ header.header-bg-light {
 }
 
 /* My project Part */
+
 /* .My-Project {
   border: 2px solid red;
   padding-top: 5rem;
@@ -749,11 +750,12 @@ header.header-bg-light {
     border: 1px solid orange;
     background-color: rgba(0, 0, 0, 0.2);
 
+    /* disable the video demo thumbnail only */
     .thumbNail-1 {
       display: none;
     }
 
-    /* customizing the video */
+    /* customizing the video demo */
     video {
       width: 250px;
       aspect-ratio: 16/10;
@@ -1255,6 +1257,7 @@ footer.footer-bgColor {
     padding: 0 1rem;
   }
 
+  /* disable profile DP in about me for all mobile phones */
   .Ola-card {
     display: none;
   }
@@ -1274,6 +1277,7 @@ footer.footer-bgColor {
     }
   }
 
+  /* Styling Skills part */
   .SkillBoxContainer {
     width: 92%;
     height: 90dvh;
@@ -1300,6 +1304,7 @@ footer.footer-bgColor {
 
       transition: none;
 
+      /* enable video demo thumbnail only */
       .thumbNail-1 {
         display: flex;
         justify-content: center;
@@ -1310,7 +1315,7 @@ footer.footer-bgColor {
         padding: 0.55rem;
       }
 
-      /* customizing the video */
+      /* disable the video demo */
       video {
         display: none;
       }
@@ -1368,7 +1373,7 @@ footer.footer-bgColor {
   }
 
   /* prevent animation on mobile phones(intro,about me, project, service offer, contact me) */
-  .hidden {
+  /* .hidden {
     transition: none;
-  }
+  } */
 }
