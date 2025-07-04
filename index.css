@@ -749,6 +749,10 @@ header.header-bg-light {
     border: 1px solid orange;
     background-color: rgba(0, 0, 0, 0.2);
 
+    .thumbNail-1 {
+      display: none;
+    }
+
     /* customizing the video */
     video {
       width: 250px;
@@ -1285,52 +1289,35 @@ footer.footer-bgColor {
     scale: none;
   }
 
+  /* Styling My-Project part */
   .cards {
     gap: 3rem;
     padding: 2.5rem;
-  }
 
-  .box {
-    transition: none;
-  }
+    .videoLink {
+      width: 265px;
+      height: 250px;
 
-  .box video {
-    width: 200px;
-    height: 200px;
-  }
+      transition: none;
 
-  .box:hover {
-    scale: none;
-  }
+      .thumbNail-1 {
+        display: flex;
+        justify-content: center;
 
-  .box:active {
-    scale: none;
-  }
+        width: 100%;
+        height: 180px;
 
-  /* prevent animation on mobile phones */
-  .hidden {
-    transition: none;
+        padding: 0.55rem;
+      }
+
+      /* customizing the video */
+      video {
+        display: none;
+      }
+    }
   }
 
   /* Styling of Services Offered */
-  .Boxes > div {
-    width: 300px;
-    height: 300px;
-  }
-
-  .Boxes > div p {
-    padding: 0.5rem;
-  }
-
-  .Boxes > div:hover {
-    scale: none;
-  }
-
-  .animate {
-    transform: none;
-    transition: none;
-  }
-
   .service-box {
     width: 300px;
     height: 300px;
@@ -1378,5 +1365,10 @@ footer.footer-bgColor {
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.75rem;
+  }
+
+  /* prevent animation on mobile phones(intro,about me, project, service offer, contact me) */
+  .hidden {
+    transition: none;
   }
 }
