@@ -14,6 +14,6 @@
 
         // To send the Mail
         mail($toEmail, $clientName, $mailHeaders);
-        header("Location: test6.php?mailSend");
+        header("Location: index.php?mailSend");
     }
 ?>
