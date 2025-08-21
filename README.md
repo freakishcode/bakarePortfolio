@@ -1,11 +1,10 @@
 Title: Vanilla PortFolio with typescript
 
-Description: I Created A portfolio using HTML, CSS, Java script and Typescript (for type safety), and also Php (Back-end: for the contact form Submit)
+Description: I Created A portfolio using HTML, CSS, Java script and Typescript (for type safety)
 
 ### Dependencies Used:
 
 1. Typescript
-2. Php
 
 ### Steps to run Typescript Portfolio Project :
 

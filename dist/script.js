@@ -120,47 +120,33 @@ updateYear();
 setInterval(updateYear, 1000 * 60 * 60);
 // Grab form and status elements with explicit typing
 const contactForm = document.getElementById("contactForm");
-const statusEl = document.getElementById("formStatus");
-// Runtime type guard
-function isContactResponse(obj) {
-    return (typeof obj === "object" &&
-        obj !== null &&
-        "success" in obj &&
-        "message" in obj &&
-        typeof obj.success === "boolean" &&
-        typeof obj.message === "string");
-}
-// Handle form submission with type safety
-contactForm === null || contactForm === void 0 ? void 0 : contactForm.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
-    e.preventDefault();
-    if (!contactForm || !statusEl)
-        return;
-    statusEl.innerText = "Sending message...";
-    statusEl.style.color = "black";
-    try {
-        const formData = new FormData(contactForm);
-        const response = yield fetch("contact.php", {
-            method: "POST",
-            body: formData,
-        });
-        const json = yield response.json();
-        if (isContactResponse(json)) {
-            // ✅ Safe to use now
-            statusEl.innerText = json.message;
-            statusEl.style.color = json.success ? "green" : "red";
-            if (json.success) {
+const statusE = document.getElementById("formStatus");
+if (contactForm && statusE) {
+    contactForm.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
+        e.preventDefault();
+        statusE.innerText = "Sending...";
+        statusE.style.color = "#444";
+        const data = new FormData(contactForm);
+        try {
+            const response = yield fetch(contactForm.action, {
+                method: contactForm.method,
+                body: data,
+                headers: { Accept: "application/json" },
+            });
+            if (response.ok) {
+                statusE.innerText = "✅ Message sent successfully!";
+                statusE.style.color = "green";
                 contactForm.reset();
             }
+            else {
+                statusE.innerText = "❌ Oops! Something went wrong.";
+                statusE.style.color = "red";
+            }
         }
-        else {
-            // ❌ Backend returned unexpected format
-            statusEl.innerText = "Unexpected response format ❌";
-            statusEl.style.color = "red";
+        catch (error) {
+            console.error(error);
+            statusE.innerText = "❌ Network error. Please try again.";
+            statusE.style.color = "red";
         }
-    }
-    catch (error) {
-        const message = error instanceof Error ? error.message : "Something went wrong ❌";
-        statusEl.innerText = message;
-        statusEl.style.color = "red";
-    }
-}));
+    }));
+}

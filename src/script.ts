@@ -157,64 +157,38 @@ setInterval(updateYear, 1000 * 60 * 60);
 const contactForm = document.getElementById(
   "contactForm"
 ) as HTMLFormElement | null;
-const statusEl = document.getElementById(
+const statusE = document.getElementById(
   "formStatus"
 ) as HTMLParagraphElement | null;
 
-// Define expected shape of backend response
-interface ContactResponse {
-  success: boolean;
-  message: string;
-}
+if (contactForm && statusE) {
+  contactForm.addEventListener("submit", async (e: Event) => {
+    e.preventDefault();
 
-// Runtime type guard
-function isContactResponse(obj: unknown): obj is ContactResponse {
-  return (
-    typeof obj === "object" &&
-    obj !== null &&
-    "success" in obj &&
-    "message" in obj &&
-    typeof (obj as any).success === "boolean" &&
-    typeof (obj as any).message === "string"
-  );
-}
+    statusE.innerText = "Sending...";
+    statusE.style.color = "#444";
 
-// Handle form submission with type safety
-contactForm?.addEventListener("submit", async (e: SubmitEvent) => {
-  e.preventDefault();
+    const data = new FormData(contactForm);
 
-  if (!contactForm || !statusEl) return;
+    try {
+      const response: Response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: data,
+        headers: { Accept: "application/json" },
+      });
 
-  statusEl.innerText = "Sending message...";
-  statusEl.style.color = "black";
-
-  try {
-    const formData = new FormData(contactForm);
-
-    const response = await fetch("contact.php", {
-      method: "POST",
-      body: formData,
-    });
-
-    const json = await response.json();
-
-    if (isContactResponse(json)) {
-      // ✅ Safe to use now
-      statusEl.innerText = json.message;
-      statusEl.style.color = json.success ? "green" : "red";
-
-      if (json.success) {
+      if (response.ok) {
+        statusE.innerText = "✅ Message sent successfully!";
+        statusE.style.color = "green";
         contactForm.reset();
+      } else {
+        statusE.innerText = "❌ Oops! Something went wrong.";
+        statusE.style.color = "red";
       }
-    } else {
-      // ❌ Backend returned unexpected format
-      statusEl.innerText = "Unexpected response format ❌";
-      statusEl.style.color = "red";
+    } catch (error) {
+      console.error(error);
+      statusE.innerText = "❌ Network error. Please try again.";
+      statusE.style.color = "red";
     }
-  } catch (error: unknown) {
-    const message =
-      error instanceof Error ? error.message : "Something went wrong ❌";
-    statusEl.innerText = message;
-    statusEl.style.color = "red";
-  }
-});
+  });
+}
