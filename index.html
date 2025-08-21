@@ -6,55 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bakare, .A. Olayemi Portfolio</title>
 
-    <!-- fav icon for the title icon -->
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Portfolio of Olayemi Bakare, Web Developer specializing in React, TypeScript, and modern Web Design."
+    />
+
+    <!-- Fav icon -->
     <link
       rel="shortcut icon"
       href="./assets/B-LOGO/icons8-energy-efficiency-b-48.png"
       type="image/x-icon"
     />
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="./index.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css" />
 
-    <!-- External Java Script -->
-    <script defer src="./dist/index.js"></script>
+    <!-- JavaScript -->
+    <script defer src="./dist/script.js"></script>
   </head>
   <body>
-    <!--Navigation Menu -->
-    <nav class="Nav-wrapper" id="Nav-wrapper">
-      <!-- My Designed logo -->
+    <!-- Navigation Menu -->
+    <nav
+      class="Nav-wrapper"
+      id="Nav-wrapper"
+      role="navigation"
+      aria-label="Main Navigation"
+    >
+      <!-- Logo -->
       <a href="#home" class="Nav-logo">
         <img
           src="./assets/B-LOGO/icons8-energy-efficiency-b-48.png"
-          alt="my-logo"
+          alt="Bakare Logo"
           class="logo-icon"
+          loading="lazy"
         />
         <span class="logo-text">BAKARE</span>
       </a>
 
-      <!-- Navbar -->
+      <!-- Navbar Links -->
       <ul class="nav-items" id="navbar">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#project">Project</a></li>
-        <li><a href="#service">Service</a></li>
+        <li><a href="#project">Projects</a></li>
+        <li><a href="#service">Services</a></li>
         <li><a href="#contact">Contacts</a></li>
       </ul>
 
-      <!--A Switch Button for light & dark background-->
+      <!-- Theme Switch -->
       <div class="themeToggler">
         <img
           src="./assets/Icons/sun.png"
-          alt="sun icon"
+          alt="Theme switch button"
           class="icon"
           id="theme"
           loading="lazy"
         />
       </div>
 
-      <!-- Toggle Menu for Mobile friendly device -->
-      <button class="toggleBtn" id="toggleIcon">
+      <!-- Mobile Toggle -->
+      <button
+        class="toggleBtn"
+        id="toggleIcon"
+        aria-controls="navbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
@@ -62,45 +80,41 @@
     </nav>
 
     <main>
-      <!-- Presentation -->
-      <div id="home" class="intro-content hidden">
-        <!--  Text Header -->
+      <!-- HERO SECTION -->
+      <section id="home" class="intro-content hidden" aria-label="Introduction">
         <div class="Text-Header">
-          <small>Hello,</small>
+          <small>Hello, I'm</small>
           <span class="dynamic-text" id="Dynamic">
-            <h2>I'm Olayemi Bakare,</h2>
-            <h2>I'm a Web designer,</h2>
-            <h2>I'm a Web developer,</h2>
-            <h2>I'm also a freelancer.</h2>
+            <h2>Olayemi Bakare,</h2>
+            <h2>a Web Designer,</h2>
+            <h2>a Web Developer,</h2>
+            <h2>also a Freelancer.</h2>
           </span>
 
-          <!-- Summary -->
           <h6>
-            My official portfolio website showing casing Details, Achievement
-            and my Projects as a professional web designer/developer.
+            My official portfolio website showcasing details, achievements, and
+            my projects as a professional web designer and developer.
           </h6>
 
-          <!-- A button to get in touch with me -->
-          <a class="hire-me" href="#contact">HIRE ME</a>
+          <a class="hire-me" href="#contact">Hire Me</a>
         </div>
 
-        <!-- My Profile picture -->
+        <!-- Profile Image -->
         <div class="ProfilePic">
-          <!-- Picture shape -->
           <img
             src="./assets/Profile_picture/shape-3.png"
-            alt="shape"
+            alt="Decorative shape"
             class="shape"
+            loading="lazy"
           />
-
-          <!-- D.P background-image -->
           <img
             class="me"
             src="./assets/Profile_picture/native2.png"
-            alt="ProfilePic"
+            alt="Olayemi Bakare"
+            loading="lazy"
           />
         </div>
-      </div>
+      </section>
 
       <!-- ABOUT ME -->
       <div id="about" class="About hidden">
@@ -111,18 +125,14 @@
           <!-- brief description -->
           <div class="summary">
             <p>
-              Greetings, my name is Olayemi .A. Bakare (aka Ola), i am a
-              professional web designer/developer based in Port-harcourt, Rivers
-              state, Nigeria. I create beautiful and interactive website with 4
-              years of Experience. I'm very passionate, motivated and dedicated
-              to my work.
-            </p>
-
-            <p>
-              I'm open to working with other web developers and UI/UX designers
-              and willing to share my ideas and thought for the better of both
-              parties or more. I'm also friendly, positive thinking and fun to
-              collaborate with and lastly, easy going.
+              Hi, I’m Olayemi A. Bakare (Ola) — a web designer and developer
+              based in Port Harcourt, Nigeria. With 4 years of experience, I
+              enjoy creating beautiful, interactive, and user-friendly websites
+              that bring ideas to life. I love collaborating with other
+              developers and UI/UX designers, sharing ideas, and building
+              projects that make an impact. I’m passionate about coding,
+              positive in mindset, and easy to work with — making teamwork both
+              fun and productive.
             </p>
           </div>
 
@@ -212,25 +222,29 @@
                 <a href="https://www.facebook.com/freakishcode"
                   ><img
                     src="./assets/Icons/Social-Media-icons/facebook.png"
-                    alt=""
+                    alt="facebook icon"
+                    loading="lazy"
                 /></a>
 
                 <a href="https://github.com/freakishcode/Freakishcode"
                   ><img
                     src="./assets/Icons/Social-Media-icons/github.png"
-                    alt=""
+                    alt="github icon"
+                    loading="lazy"
                 /></a>
 
                 <a href="https://www.linkedin.com/in/dauntless-ajibola/"
                   ><img
                     src="./assets/Icons/Social-Media-icons/linkedin.png"
-                    alt=""
+                    alt="linkedin icon"
+                    loading="lazy"
                 /></a>
 
                 <a href="https://x.com/olayemi291"
                   ><img
                     src="./assets/Icons/Social-Media-icons/twitter.png"
                     alt=""
+                    loading="lazy"
                 /></a>
               </div>
             </div>
@@ -416,30 +430,24 @@
       </div>
 
       <div class="My-Project hidden" id="project">
-        <!-- Tittle -->
         <header>MY PROJECT</header>
 
         <div class="cards">
           <!-- 1st project -->
           <a
             class="videoLink"
-            href="https://freakishcode.github.io/My-React-Projects/CRUD/
-          "
+            href="https://freakishcode.github.io/My-React-Projects/CRUD/"
           >
-            <!-- website thumbnail for mobile phones only -->
             <img
               src="./assets/video-materials/CRUD-thumbnail.png"
               class="thumbNail-1"
               alt="CRUD project demo thumbnail"
             />
-
             <video
               src="./assets/video-materials/CRUD-demo.mp4"
               muted
               loop
-              type="video/mp4"
-              onmouseover="this.play()"
-              onmouseout="this.pause()"
+              class="preview-video"
             ></video>
             <h2>C.R.U.D Application</h2>
           </a>
@@ -449,20 +457,16 @@
             class="videoLink"
             href="https://freakishcode.github.io/My-React-Projects/Weather-App/"
           >
-            <!-- website thumbnail for mobile phones only -->
             <img
               src="./assets/video-materials/weatherApp-thumnail.png"
               class="thumbNail-1"
-              alt="WeatherAppDem project thumbnail"
+              alt="Weather App demo thumbnail"
             />
-
             <video
               src="./assets/video-materials/WeatherAppDemo.mp4"
               muted
               loop
-              type="video/mp4"
-              onmouseover="this.play()"
-              onmouseout="this.pause()"
+              class="preview-video"
             ></video>
             <h2>Weather App</h2>
           </a>
@@ -472,45 +476,37 @@
             class="videoLink"
             href="https://freakishcode.github.io/My-React-Projects/NEWS/"
           >
-            <!-- website thumbnail  for mobile phones only-->
             <img
               src="./assets/video-materials/NEWS-Thumbnail.png"
               class="thumbNail-1"
-              alt="NEWSappDEMO thumbnail"
+              alt="News App demo thumbnail"
             />
-
             <video
-              src="./assets//video-materials/NEWSappDEMO.mp4"
+              src="./assets/video-materials/NEWSappDEMO.mp4"
               muted
               loop
-              type="video/mp4"
-              onmouseover="this.play()"
-              onmouseout="this.pause()"
+              class="preview-video"
             ></video>
             <h2>News App</h2>
           </a>
 
-          <!-- 4rd project -->
+          <!-- 4th project -->
           <a
             class="videoLink"
             href="https://freakishcode.github.io/non-React-project/Medical-website/"
           >
-            <!-- website thumbnail for mobile phones only -->
             <img
               src="./assets/video-materials/medical-website-thumbnail.png"
               class="thumbNail-1"
               alt="Medical website demo thumbnail"
             />
-
             <video
-              src="./assets//video-materials/Medical-static-page-demo.mp4"
+              src="./assets/video-materials/Medical-static-page-demo.mp4"
               muted
               loop
-              type="video/mp4"
-              onmouseover="this.play()"
-              onmouseout="this.pause()"
+              class="preview-video"
             ></video>
-            <h2>Medical website(UI)</h2>
+            <h2>Medical Website (UI)</h2>
           </a>
         </div>
       </div>
@@ -615,8 +611,17 @@
             </div>
           </div>
 
+          <!-- ==========================
+                    CONTACT FORM
+          =========================== -->
+
           <!-- Get in touch by direct Email Messaging -->
-          <form class="client-form" action="./contact.php" method="POST">
+          <form
+            class="client-form"
+            action="./contactBackend.php"
+            method="POST"
+            id="contactForm"
+          >
             <input
               class="clientName"
               type="text"
@@ -628,7 +633,7 @@
 
             <input
               class="clientEmail"
-              type="text"
+              type="email"
               name="email"
               placeholder="Your Email address"
               minlength="5"
@@ -647,6 +652,7 @@
               <span>Send Message</span>
               <img src="./assets/Icons/icons8-sent-48.png" alt="send icon" />
             </button>
+            <p id="formStatus"></p>
           </form>
         </div>
       </div>
@@ -683,39 +689,45 @@
       <a href="#home" class="Nav-logo">
         <img
           src="./assets/B-LOGO/icons8-energy-efficiency-b-48.png"
-          alt="my-logo"
+          alt="Bakare Logo"
           class="Nav-logo"
+          loading="lazy"
         />
         <span class="logo-text">BAKARE</span>
       </a>
 
       <div class="copyright">
-        <h5>
-          <!-- Using internal JS to get current year -->
-          copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          . All right reserved
-        </h5>
+        <h5 id="year-text"></h5>
       </div>
 
       <!-- My social medial links -->
       <div class="footer-social-Media-Link">
         <a href="https://www.facebook.com/freakishcode"
-          ><img src="./assets/Icons/Social-Media-icons/facebook.png" alt=""
+          ><img
+            src="./assets/Icons/Social-Media-icons/facebook.png"
+            alt="facebook icon"
+            loading="lazy"
         /></a>
 
         <a href="https://github.com/freakishcode/Freakishcode"
-          ><img src="./assets/Icons/Social-Media-icons/github.png" alt=""
+          ><img
+            src="./assets/Icons/Social-Media-icons/github.png"
+            alt="github icon"
+            loading="lazy"
         /></a>
 
         <a href="https://www.linkedin.com/in/dauntless-ajibola/"
-          ><img src="./assets/Icons/Social-Media-icons/linkedin.png" alt=""
+          ><img
+            src="./assets/Icons/Social-Media-icons/linkedin.png"
+            alt="linkedin icon"
+            loading="lazy"
         /></a>
 
         <a href="https://x.com/olayemi291"
-          ><img src="./assets/Icons/Social-Media-icons/twitter.png" alt=""
+          ><img
+            src="./assets/Icons/Social-Media-icons/twitter.png"
+            alt="x formerly known as Twitter icon"
+            loading="lazy"
         /></a>
       </div>
     </footer>

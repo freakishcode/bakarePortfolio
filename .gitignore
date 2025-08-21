@@ -1,0 +1,2 @@
+# Ignore configuration and secret files
+.env
