@@ -117,6 +117,18 @@ $$<HTMLElement>(".animate-service").forEach((el) =>
   servicesObserver.observe(el)
 );
 
+function updateYear() {
+  const yearText = document.getElementById("year-text");
+  if (yearText) {
+    const year = new Date().getFullYear();
+    yearText.textContent = `© ${year}. All rights reserved.`;
+  }
+}
+// Run once on load
+updateYear();
+// Re-check every hour (handles New Year rollover without reload)
+setInterval(updateYear, 1000 * 60 * 60);
+
 // ---------- modal (contact) ----------
 const form = $(".client-form") as HTMLFormElement | null;
 const modal = $("#modal-popup") as HTMLDivElement | null;
@@ -139,20 +151,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-function updateYear() {
-  const yearText = document.getElementById("year-text");
-  if (yearText) {
-    const year = new Date().getFullYear();
-    yearText.textContent = `© ${year}. All rights reserved.`;
-  }
-}
-
-// Run once on load
-updateYear();
-
-// Re-check every hour (handles New Year rollover without reload)
-setInterval(updateYear, 1000 * 60 * 60);
-
+// ---------- (contact: third party - form spree) ----------
 // Grab form and status elements with explicit typing
 const contactForm = document.getElementById(
   "contactForm"
