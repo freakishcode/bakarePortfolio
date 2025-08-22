@@ -130,20 +130,48 @@ updateYear();
 setInterval(updateYear, 1000 * 60 * 60);
 
 // ---------- modal (contact) ----------
-const form = $(".client-form") as HTMLFormElement | null;
-const modal = $("#modal-popup") as HTMLDivElement | null;
+const modal = document.getElementById("modal-popup") as HTMLDivElement | null;
 const overlay = modal?.querySelector(".overlay") as HTMLDivElement | null;
-const closeBtn = $("#closeBtn") as HTMLButtonElement | null;
-const okBtn = $("#okayBtn") as HTMLButtonElement | null;
+const closeBtn = document.getElementById(
+  "closeBtn"
+) as HTMLButtonElement | null;
+const okBtn = document.getElementById("okayBtn") as HTMLButtonElement | null;
+const modalMessage = modal?.querySelector(
+  ".modal-message"
+) as HTMLParagraphElement | null;
 
-const openModal = () => modal?.classList.add("action");
-const closeModal = () => modal?.classList.remove("action");
+let autoCloseTimer: number | undefined;
 
-form?.addEventListener("submit", (e) => {
-  e.preventDefault(); // show your modal instead of navigating away
-  openModal();
-});
+// open modal with custom message and color
+const openModal = (
+  message: string,
+  color: string,
+  autoClose: boolean = false
+) => {
+  if (modal && modalMessage) {
+    modalMessage.innerText = message;
+    modalMessage.style.color = color;
+    modal.classList.add("action");
 
+    // clear any previous timer
+    if (autoCloseTimer) clearTimeout(autoCloseTimer);
+
+    // auto-close only if requested
+    if (autoClose) {
+      autoCloseTimer = window.setTimeout(() => {
+        closeModal();
+      }, 3000); // 3 seconds
+    }
+  }
+};
+
+// close modal
+const closeModal = () => {
+  if (modal) modal.classList.remove("action");
+  if (autoCloseTimer) clearTimeout(autoCloseTimer);
+};
+
+// event listeners for closing the modal
 closeBtn?.addEventListener("click", closeModal);
 okBtn?.addEventListener("click", closeModal);
 overlay?.addEventListener("click", closeModal);
@@ -152,23 +180,21 @@ document.addEventListener("keydown", (e) => {
 });
 
 // ---------- (contact: third party - form spree) ----------
-// Grab form and status elements with explicit typing
 const contactForm = document.getElementById(
   "contactForm"
 ) as HTMLFormElement | null;
-const statusE = document.getElementById(
-  "formStatus"
-) as HTMLParagraphElement | null;
 
-if (contactForm && statusE) {
+// handle form submission
+if (contactForm) {
   contactForm.addEventListener("submit", async (e: Event) => {
     e.preventDefault();
 
-    statusE.innerText = "Sending...";
-    statusE.style.color = "#444";
+    // Show modal with "sending" state
+    openModal("Sending...", "#444");
 
     const data = new FormData(contactForm);
 
+    // Use Fetch API to submit the form data
     try {
       const response: Response = await fetch(contactForm.action, {
         method: contactForm.method,
@@ -177,17 +203,14 @@ if (contactForm && statusE) {
       });
 
       if (response.ok) {
-        statusE.innerText = "✅ Message sent successfully!";
-        statusE.style.color = "green";
+        openModal("✅ Message sent successfully!", "green");
         contactForm.reset();
       } else {
-        statusE.innerText = "❌ Oops! Something went wrong.";
-        statusE.style.color = "red";
+        openModal("❌ Oops! Something went wrong.", "red");
       }
     } catch (error) {
       console.error(error);
-      statusE.innerText = "❌ Network error. Please try again.";
-      statusE.style.color = "red";
+      openModal("❌ Network error. Please try again.", "red");
     }
   });
 }

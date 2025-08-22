@@ -88,25 +88,6 @@ const servicesObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.12 });
 $$(".animate-service").forEach((el) => servicesObserver.observe(el));
-// ---------- modal (contact) ----------
-const form = $(".client-form");
-const modal = $("#modal-popup");
-const overlay = modal === null || modal === void 0 ? void 0 : modal.querySelector(".overlay");
-const closeBtn = $("#closeBtn");
-const okBtn = $("#okayBtn");
-const openModal = () => modal === null || modal === void 0 ? void 0 : modal.classList.add("action");
-const closeModal = () => modal === null || modal === void 0 ? void 0 : modal.classList.remove("action");
-form === null || form === void 0 ? void 0 : form.addEventListener("submit", (e) => {
-    e.preventDefault(); // show your modal instead of navigating away
-    openModal();
-});
-closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener("click", closeModal);
-okBtn === null || okBtn === void 0 ? void 0 : okBtn.addEventListener("click", closeModal);
-overlay === null || overlay === void 0 ? void 0 : overlay.addEventListener("click", closeModal);
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape")
-        closeModal();
-});
 function updateYear() {
     const yearText = document.getElementById("year-text");
     if (yearText) {
@@ -118,15 +99,55 @@ function updateYear() {
 updateYear();
 // Re-check every hour (handles New Year rollover without reload)
 setInterval(updateYear, 1000 * 60 * 60);
-// Grab form and status elements with explicit typing
+// ---------- modal (contact) ----------
+const modal = document.getElementById("modal-popup");
+const overlay = modal === null || modal === void 0 ? void 0 : modal.querySelector(".overlay");
+const closeBtn = document.getElementById("closeBtn");
+const okBtn = document.getElementById("okayBtn");
+const modalMessage = modal === null || modal === void 0 ? void 0 : modal.querySelector(".modal-message");
+let autoCloseTimer;
+// open modal with custom message and color
+const openModal = (message, color, autoClose = false) => {
+    if (modal && modalMessage) {
+        modalMessage.innerText = message;
+        modalMessage.style.color = color;
+        modal.classList.add("action");
+        // clear any previous timer
+        if (autoCloseTimer)
+            clearTimeout(autoCloseTimer);
+        // auto-close only if requested
+        if (autoClose) {
+            autoCloseTimer = window.setTimeout(() => {
+                closeModal();
+            }, 3000); // 3 seconds
+        }
+    }
+};
+// close modal
+const closeModal = () => {
+    if (modal)
+        modal.classList.remove("action");
+    if (autoCloseTimer)
+        clearTimeout(autoCloseTimer);
+};
+// event listeners for closing the modal
+closeBtn === null || closeBtn === void 0 ? void 0 : closeBtn.addEventListener("click", closeModal);
+okBtn === null || okBtn === void 0 ? void 0 : okBtn.addEventListener("click", closeModal);
+overlay === null || overlay === void 0 ? void 0 : overlay.addEventListener("click", closeModal);
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape")
+        closeModal();
+});
+// ---------- (contact: third party - form spree) ----------
 const contactForm = document.getElementById("contactForm");
-const statusE = document.getElementById("formStatus");
-if (contactForm && statusE) {
+// handle form submission
+if (contactForm) {
     contactForm.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
         e.preventDefault();
-        statusE.innerText = "Sending...";
-        statusE.style.color = "#444";
+        // Show modal with "sending" state
+        openModal("Sending...", "#444");
         const data = new FormData(contactForm);
+        // Use Fetch API to submit the form data
         try {
             const response = yield fetch(contactForm.action, {
                 method: contactForm.method,
@@ -134,19 +155,16 @@ if (contactForm && statusE) {
                 headers: { Accept: "application/json" },
             });
             if (response.ok) {
-                statusE.innerText = "✅ Message sent successfully!";
-                statusE.style.color = "green";
+                openModal("✅ Message sent successfully!", "green");
                 contactForm.reset();
             }
             else {
-                statusE.innerText = "❌ Oops! Something went wrong.";
-                statusE.style.color = "red";
+                openModal("❌ Oops! Something went wrong.", "red");
             }
         }
         catch (error) {
             console.error(error);
-            statusE.innerText = "❌ Network error. Please try again.";
-            statusE.style.color = "red";
+            openModal("❌ Network error. Please try again.", "red");
         }
     }));
 }
