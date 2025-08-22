@@ -2,73 +2,95 @@
 const $ = <T extends HTMLElement>(
   sel: string,
   root: Document | HTMLElement = document
-) => root.querySelector<T>(sel);
+): T | null => root.querySelector<T>(sel);
+
 const $$ = <T extends HTMLElement>(
   sel: string,
   root: Document | HTMLElement = document
-) => Array.from(root.querySelectorAll<T>(sel));
+): T[] => Array.from(root.querySelectorAll<T>(sel));
+
+// Strongly typed `on` helper for HTMLElement, Document, and Window
+function on<K extends keyof HTMLElementEventMap>(
+  el: HTMLElement | null,
+  type: K,
+  handler: (ev: HTMLElementEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): void;
+function on<K extends keyof DocumentEventMap>(
+  el: Document | null,
+  type: K,
+  handler: (ev: DocumentEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): void;
+function on<K extends keyof WindowEventMap>(
+  el: Window | null,
+  type: K,
+  handler: (ev: WindowEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): void;
+function on(
+  el: HTMLElement | Document | Window | null,
+  type: string,
+  handler: EventListener,
+  options?: boolean | AddEventListenerOptions
+): void {
+  el?.addEventListener(type, handler, options);
+}
 
 // ---------- core DOM references ----------
 const themeBtn = $("#theme") as HTMLImageElement | null;
-const nav = $("#Nav-wrapper") as HTMLElement | null;
-const footer = $("footer") as HTMLElement | null;
-const navbar = $("#navbar") as HTMLElement | null;
-const toggler = $("#toggleIcon") as HTMLButtonElement | null;
-
-// all section headers inside <main> (covers About/Skills/Projects/Service/Contact)
+const nav = $("#Nav-wrapper");
+const footer = $("footer");
+const navbar = $("#navbar");
+const toggler = $("#toggleIcon");
 const sectionHeaders = $$<HTMLElement>("main header");
 
 // ---------- theme toggle ----------
-themeBtn?.addEventListener("click", () => {
+on(themeBtn, "click", () => {
   const lightOn = document.body.classList.toggle("light");
 
-  // keep your CSS hooks intact
   nav?.classList.toggle("dark-grey");
   footer?.classList.toggle("footer-bgColor");
-
-  // apply your .header-bg-light to every section header
   sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", lightOn));
 
-  // swap icon
-  if (lightOn) {
-    themeBtn.src = "./assets/Icons/moon.png";
-  } else {
-    themeBtn.src = "./assets/Icons/sun.png";
-  }
+  if (themeBtn)
+    themeBtn.src = lightOn
+      ? "./assets/Icons/moon.png"
+      : "./assets/Icons/sun.png";
 
-  // smoothen background & text color transition
   document.body.style.transition = "background 0.2s linear, color 0.2s linear";
 });
 
-// ---------- sticky nav on scroll ----------
-window.addEventListener(
+// ---------- sticky nav ----------
+on(
+  window,
   "scroll",
   () => {
-    if (!nav) return;
-    nav.classList.toggle("sticky", window.scrollY > 20);
+    nav?.classList.toggle("sticky", window.scrollY > 20);
   },
   { passive: true }
 );
 
-// ---------- mobile menu toggle ----------
-toggler?.setAttribute("aria-controls", "navbar");
-toggler?.setAttribute("aria-expanded", "false");
-toggler?.setAttribute("aria-label", "Toggle navigation menu");
+// ---------- mobile menu ----------
+if (toggler && navbar) {
+  toggler.setAttribute("aria-controls", "navbar");
+  toggler.setAttribute("aria-expanded", "false");
+  toggler.setAttribute("aria-label", "Toggle navigation menu");
 
-toggler?.addEventListener("click", () => {
-  const showing = navbar?.classList.toggle("show") ?? false;
-  toggler.classList.toggle("show", showing);
-  toggler.setAttribute("aria-expanded", showing ? "true" : "false");
-});
+  on(toggler, "click", () => {
+    const showing = navbar.classList.toggle("show");
+    toggler.classList.toggle("show", showing);
+    toggler.setAttribute("aria-expanded", showing.toString());
+  });
 
-// close the mobile menu when a navbar link is clicked
-$$<HTMLAnchorElement>("#navbar a").forEach((a) =>
-  a.addEventListener("click", () => {
-    navbar?.classList.remove("show");
-    toggler?.classList.remove("show");
-    toggler?.setAttribute("aria-expanded", "false");
-  })
-);
+  $$<HTMLAnchorElement>("#navbar a").forEach((a) =>
+    on(a, "click", () => {
+      navbar.classList.remove("show");
+      toggler.classList.remove("show");
+      toggler.setAttribute("aria-expanded", "false");
+    })
+  );
+}
 
 // ---------- reveal animations ----------
 const revealObserver = new IntersectionObserver(
@@ -76,7 +98,6 @@ const revealObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         (entry.target as HTMLElement).classList.add("show");
-        // reveal once, then stop observing to avoid reflow churn
         obs.unobserve(entry.target);
       }
     });
@@ -87,28 +108,23 @@ const revealObserver = new IntersectionObserver(
 $$<HTMLElement>(".hidden").forEach((el) => revealObserver.observe(el));
 
 // ---------- project video preview ----------
-// This handles the video preview on hover for project cards
 function initProjectVideoPreview() {
-  const videos = document.querySelectorAll<HTMLVideoElement>(".preview-video");
-
-  videos.forEach((video) => {
-    video.addEventListener("mouseenter", () => video.play());
-    video.addEventListener("mouseleave", () => video.pause());
+  $$<HTMLVideoElement>(".preview-video").forEach((video) => {
+    on(video, "mouseenter", () => video.play());
+    on(video, "mouseleave", () => video.pause());
   });
 }
+on(document, "DOMContentLoaded", initProjectVideoPreview);
 
-// Run when DOM is ready
-document.addEventListener("DOMContentLoaded", initProjectVideoPreview);
-
-// services animation
+// ---------- services animation ----------
 const servicesObserver = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => {
+    entries.forEach((entry) =>
       (entry.target as HTMLElement).classList.toggle(
         "showAnimate",
         entry.isIntersecting
-      );
-    });
+      )
+    );
   },
   { threshold: 0.12 }
 );
@@ -117,100 +133,73 @@ $$<HTMLElement>(".animate-service").forEach((el) =>
   servicesObserver.observe(el)
 );
 
+// ---------- dynamic year update ----------
 function updateYear() {
-  const yearText = document.getElementById("year-text");
-  if (yearText) {
-    const year = new Date().getFullYear();
-    yearText.textContent = `© ${year}. All rights reserved.`;
-  }
+  const yearText = $("#year-text");
+  if (yearText)
+    yearText.textContent = `© ${new Date().getFullYear()}. All rights reserved.`;
 }
-// Run once on load
 updateYear();
-// Re-check every hour (handles New Year rollover without reload)
 setInterval(updateYear, 1000 * 60 * 60);
 
 // ---------- modal (contact) ----------
-const modal = document.getElementById("modal-popup") as HTMLDivElement | null;
-const overlay = modal?.querySelector(".overlay") as HTMLDivElement | null;
-const closeBtn = document.getElementById(
-  "closeBtn"
-) as HTMLButtonElement | null;
-const okBtn = document.getElementById("okayBtn") as HTMLButtonElement | null;
-const modalMessage = modal?.querySelector(
-  ".modal-message"
-) as HTMLParagraphElement | null;
+const modal = $("#modal-popup");
+const overlay = $(".overlay", modal || undefined);
+const closeBtn = $("#closeBtn");
+const okBtn = $("#okayBtn");
+const modalMessage = $(".modal-message", modal || undefined);
 
 let autoCloseTimer: number | undefined;
 
-// open modal with custom message and color
-const openModal = (
-  message: string,
-  color: string,
-  autoClose: boolean = false
-) => {
-  if (modal && modalMessage) {
-    modalMessage.innerText = message;
-    modalMessage.style.color = color;
-    modal.classList.add("action");
+function openModal(message: string, color: string, autoClose = false) {
+  if (!modal || !modalMessage) return;
 
-    // clear any previous timer
-    if (autoCloseTimer) clearTimeout(autoCloseTimer);
+  modalMessage.innerText = message;
+  modalMessage.style.color = color;
+  modal.classList.add("action");
 
-    // auto-close only if requested
-    if (autoClose) {
-      autoCloseTimer = window.setTimeout(() => {
-        closeModal();
-      }, 3000); // 3 seconds
-    }
-  }
-};
-
-// close modal
-const closeModal = () => {
-  if (modal) modal.classList.remove("action");
   if (autoCloseTimer) clearTimeout(autoCloseTimer);
-};
+  if (autoClose) {
+    autoCloseTimer = window.setTimeout(closeModal, 3000);
+  }
+}
 
-// event listeners for closing the modal
-closeBtn?.addEventListener("click", closeModal);
-okBtn?.addEventListener("click", closeModal);
-overlay?.addEventListener("click", closeModal);
-document.addEventListener("keydown", (e) => {
+function closeModal() {
+  modal?.classList.remove("action");
+  if (autoCloseTimer) clearTimeout(autoCloseTimer);
+}
+
+on(closeBtn, "click", closeModal);
+on(okBtn, "click", closeModal);
+on(overlay, "click", closeModal);
+on(document, "keydown", (e: KeyboardEvent) => {
   if (e.key === "Escape") closeModal();
 });
 
-// ---------- (contact: third party - form spree) ----------
-const contactForm = document.getElementById(
-  "contactForm"
-) as HTMLFormElement | null;
+// ---------- contact form (Formspree) ----------
+const contactForm = $("#contactForm") as HTMLFormElement | null;
 
-// handle form submission
-if (contactForm) {
-  contactForm.addEventListener("submit", async (e: Event) => {
-    e.preventDefault();
+on(contactForm, "submit", async (e: Event) => {
+  e.preventDefault();
+  if (!contactForm) return;
 
-    // Show modal with "sending" state
-    openModal("Sending...", "#444");
+  openModal("Sending...", "#444");
 
-    const data = new FormData(contactForm);
+  try {
+    const response = await fetch(contactForm.action, {
+      method: contactForm.method,
+      body: new FormData(contactForm),
+      headers: { Accept: "application/json" },
+    });
 
-    // Use Fetch API to submit the form data
-    try {
-      const response: Response = await fetch(contactForm.action, {
-        method: contactForm.method,
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-
-      if (response.ok) {
-        openModal("✅ Message sent successfully!", "green");
-        contactForm.reset();
-      } else {
-        openModal("❌ Oops! Something went wrong.", "red");
-      }
-    } catch (error) {
-      console.error(error);
-      openModal("❌ Network error. Please try again.", "red");
+    if (response.ok) {
+      openModal("✅ Message sent successfully!", "green");
+      contactForm.reset();
+    } else {
+      openModal("❌ Oops! Something went wrong.", "red");
     }
-  });
-}
+  } catch (err) {
+    console.error(err);
+    openModal("❌ Network error. Please try again.", "red");
+  }
+});
