@@ -1,4 +1,12 @@
+// TODO: TYPESCRIPT
+
 // ---------- tiny helpers ----------
+/* *
+ * Tiny helpers for DOM selection and event handling.
+ * - `$`: Selects a single element matching the selector.
+ * - `$$`: Selects all elements matching the selector as an array.
+ * - `on`: Strongly typed event listener for HTMLElement, Document, and Window.
+ */
 const $ = <T extends HTMLElement>(
   sel: string,
   root: Document | HTMLElement = document
@@ -37,6 +45,8 @@ function on(
   el?.addEventListener(type, handler, options);
 }
 
+// TODO: JAVASCRIPT
+
 // ---------- core DOM references ----------
 const themeBtn = $("#theme") as HTMLImageElement | null;
 const nav = $("#Nav-wrapper");
@@ -46,6 +56,13 @@ const toggler = $("#toggleIcon");
 const sectionHeaders = $$<HTMLElement>("main header");
 
 // ---------- theme toggle ----------
+/* *
+ * Theme toggle:
+ * - Toggles between light and dark themes.
+ * - Updates navigation, footer, and section header styles.
+ * - Changes theme button icon.
+ */
+
 on(themeBtn, "click", () => {
   const lightOn = document.body.classList.toggle("light");
 
@@ -62,6 +79,10 @@ on(themeBtn, "click", () => {
 });
 
 // ---------- sticky nav ----------
+/* *
+ * Sticky navigation:
+ * - Adds/removes sticky class to navigation on scroll.
+ */
 on(
   window,
   "scroll",
@@ -72,6 +93,13 @@ on(
 );
 
 // ---------- mobile menu ----------
+/*
+ * Mobile menu:
+ * - Handles toggling of mobile navigation menu.
+ * - Updates ARIA attributes for accessibility.
+ * - Closes menu on navigation link click.
+ */
+
 if (toggler && navbar) {
   toggler.setAttribute("aria-controls", "navbar");
   toggler.setAttribute("aria-expanded", "false");
@@ -93,6 +121,11 @@ if (toggler && navbar) {
 }
 
 // ---------- reveal animations ----------
+/* *
+ * Reveal animations:
+ * - Uses IntersectionObserver to reveal hidden elements when in view.
+ */
+
 const revealObserver = new IntersectionObserver(
   (entries, obs) => {
     entries.forEach((entry) => {
@@ -108,6 +141,11 @@ const revealObserver = new IntersectionObserver(
 $$<HTMLElement>(".hidden").forEach((el) => revealObserver.observe(el));
 
 // ---------- project video preview ----------
+/* *
+ * Project video preview:
+ * - Plays video on mouse enter, pauses on mouse leave for preview videos.
+ */
+
 function initProjectVideoPreview() {
   $$<HTMLVideoElement>(".preview-video").forEach((video) => {
     on(video, "mouseenter", () => video.play());
@@ -117,6 +155,12 @@ function initProjectVideoPreview() {
 on(document, "DOMContentLoaded", initProjectVideoPreview);
 
 // ---------- services animation ----------
+
+/* *
+ * Services animation:
+ * - Animates service elements when they enter the viewport.
+ */
+
 const servicesObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) =>
@@ -134,6 +178,11 @@ $$<HTMLElement>(".animate-service").forEach((el) =>
 );
 
 // ---------- dynamic year update ----------
+/* *
+ * Dynamic year update:
+ * - Updates copyright year text automatically.
+ */
+
 function updateYear() {
   const yearText = $("#year-text");
   if (yearText)
@@ -143,6 +192,14 @@ updateYear();
 setInterval(updateYear, 1000 * 60 * 60);
 
 // ---------- modal (contact) ----------
+
+/* *
+ * Modal (contact):
+ * - Handles opening and closing of modal popup.
+ * - Displays messages with color and optional auto-close.
+ * - Closes modal on button, overlay click, or Escape key.
+ */
+
 const modal = $("#modal-popup");
 const overlay = $(".overlay", modal || undefined);
 const closeBtn = $("#closeBtn");
@@ -176,7 +233,13 @@ on(document, "keydown", (e: KeyboardEvent) => {
   if (e.key === "Escape") closeModal();
 });
 
-// ---------- contact form (Formspree) ----------
+// ---------- contact form (Third party:FormSpree) ----------
+/* *
+ * Contact form (FormSpree):
+ * - Submits contact form via AJAX.
+ * - Shows modal feedback for success or error.
+ */
+
 const contactForm = $("#contactForm") as HTMLFormElement | null;
 
 on(contactForm, "submit", async (e: Event) => {
