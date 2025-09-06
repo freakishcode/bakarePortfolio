@@ -1,14 +1,38 @@
-Title: Vanilla PortFolio with typescript
+# Vanilla Portfolio with TypeScript
 
-Description: I Created A portfolio using HTML, CSS, Java script and Typescript (for type safety)
+A simple personal portfolio built using **HTML**, **CSS**, **JavaScript**, and **TypeScript** for type safety.
 
-### Dependencies Used:
+---
 
-1. Typescript
+## 🚀 Features
 
-### Steps to run Typescript Portfolio Project :
+- Responsive design
+- Type-safe scripts with TypeScript
+- Easy to customize
 
-1. Installation: npm install -g typescript
-2. TypeScript config file: tsc --init
-3. Compile: tsc
-4. To watch/monitor tsc file: tsc -w
+---
+
+## 📦 Dependencies
+
+- TypeScript
+
+---
+
+## ⚙️ Setup & Usage
+
+1. **Install TypeScript globally:**
+   ```bash
+   npm install -g typescript
+   ```
+2. **Initialize TypeScript config:**
+   ```bash
+   tsc --init
+   ```
+3. **Compile the project:**
+   ```bash
+   tsc
+   ```
+4. **Watch for file changes:**
+   ```bash
+   tsc -w
+   ```
