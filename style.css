@@ -25,6 +25,7 @@
   --yellow: #ff0;
   --pink_like: #f0f;
   --orange: orangered;
+  color-scheme: light dark;
 
   --gradient: linear-gradient(45deg, #ff0, #f0f);
   --gradient2: linear-gradient(#dc3a23, #ff004f, #a14545);
@@ -38,7 +39,7 @@ html {
 body {
   width: 100%;
   height: 100%;
-  background-color: var(--dark-bg-color);
+  background-color: light-dark(--light-color, --dark-bg-color);
   color: var(--light-color);
   /* min-height: 300rem; */
 }
