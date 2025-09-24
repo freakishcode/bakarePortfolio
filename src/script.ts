@@ -55,16 +55,13 @@ const navbar = $("#navbar");
 const toggler = $("#toggleIcon");
 const sectionHeaders = $$<HTMLElement>("main header");
 
-// ---------- theme toggle ----------
+// ---------- theme toggle with localStorage + system preference ----------
 /* *
  * Theme toggle:
  * - Toggles between light and dark themes.
  * - Updates navigation, footer, and section header styles.
  * - Changes theme button icon.
  */
-
-// ---------- theme toggle with localStorage ----------
-
 const THEME_KEY = "site-theme";
 
 function applyTheme(isLight: boolean): void {
@@ -82,17 +79,26 @@ function applyTheme(isLight: boolean): void {
   document.body.style.transition = "background 0.2s linear, color 0.2s linear";
 }
 
-// Initialize theme from localStorage (default = dark)
-const savedTheme = localStorage.getItem(THEME_KEY);
-const isLight = savedTheme === "light";
+function getInitialTheme(): boolean {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+
+  if (savedTheme === "light") return true;
+  if (savedTheme === "dark") return false;
+
+  // Fallback: check system preference
+  return !window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+// Initialize theme
+let isLight = getInitialTheme();
 applyTheme(isLight);
 
 on(themeBtn, "click", () => {
-  const lightOn = !document.body.classList.contains("light");
-  applyTheme(lightOn);
+  isLight = !isLight;
+  applyTheme(isLight);
 
-  // Save theme to localStorage
-  localStorage.setItem(THEME_KEY, lightOn ? "light" : "dark");
+  // Save user preference
+  localStorage.setItem(THEME_KEY, isLight ? "light" : "dark");
 });
 
 // ---------- sticky nav ----------
