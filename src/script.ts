@@ -53,6 +53,9 @@ const nav = $("#Nav-wrapper");
 const footer = $("footer");
 const navbar = $("#navbar");
 const toggler = $("#toggleIcon");
+const hello = $("#hello");
+const introDetails = $(".intro-details");
+const DownloadCV = $(".Download-CV");
 const sectionHeaders = $$<HTMLElement>("main header");
 
 // ---------- theme toggle with localStorage + system preference ----------
@@ -67,6 +70,9 @@ const THEME_KEY = "site-theme";
 function applyTheme(isLight: boolean): void {
   document.body.classList.toggle("light", isLight);
   nav?.classList.toggle("dark-grey", isLight);
+  hello?.classList.toggle("text-color-light", isLight);
+  introDetails?.classList.toggle("text-color-light", isLight);
+  DownloadCV?.classList.toggle("text-color-light", isLight);
   footer?.classList.toggle("footer-bgColor", isLight);
   sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", isLight));
 

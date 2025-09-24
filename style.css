@@ -224,6 +224,16 @@ body {
   /* background-color: var(--dark-color); */
 }
 
+.intro-details.text-color-light,
+#hello.text-color-light,
+.Download-CV.text-color-light {
+  background: var(--gradient2);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .Text-Header::before {
   position: absolute;
   content: "";
@@ -587,7 +597,7 @@ header.header-bg-light {
     box-shadow: 7px 9px 17px #101010;
     border: 2px solid;
     border-image: linear-gradient(to right, #ff0, #f0f) 1;
-    background-color: var(--dark-bg-color);
+    background-color: inherit;
     color: var(--light-color);
     transition: ease-in-out 0.3s;
 

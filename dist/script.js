@@ -28,6 +28,9 @@ const nav = $("#Nav-wrapper");
 const footer = $("footer");
 const navbar = $("#navbar");
 const toggler = $("#toggleIcon");
+const hello = $("#hello");
+const introDetails = $(".intro-details");
+const DownloadCV = $(".Download-CV");
 const sectionHeaders = $$("main header");
 // ---------- theme toggle with localStorage + system preference ----------
 /* *
@@ -40,6 +43,9 @@ const THEME_KEY = "site-theme";
 function applyTheme(isLight) {
     document.body.classList.toggle("light", isLight);
     nav === null || nav === void 0 ? void 0 : nav.classList.toggle("dark-grey", isLight);
+    hello === null || hello === void 0 ? void 0 : hello.classList.toggle("text-color-light", isLight);
+    introDetails === null || introDetails === void 0 ? void 0 : introDetails.classList.toggle("text-color-light", isLight);
+    DownloadCV === null || DownloadCV === void 0 ? void 0 : DownloadCV.classList.toggle("text-color-light", isLight);
     footer === null || footer === void 0 ? void 0 : footer.classList.toggle("footer-bgColor", isLight);
     sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", isLight));
     if (themeBtn) {
