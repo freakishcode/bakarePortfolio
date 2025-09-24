@@ -20,6 +20,7 @@
   --dark-bg-color: #2b1a3d;
   --dark-bg-color2: #150d1e;
   --light-color: #fff;
+  --dark-color: #101010;
 
   --yellow: #ff0;
   --pink_like: #f0f;
@@ -38,7 +39,7 @@ html {
 body {
   width: 100%;
   height: 100%;
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color2);
   color: var(--light-color);
   /* min-height: 300rem; */
 }
@@ -74,9 +75,10 @@ body {
   .logo-text {
     font-weight: bold;
     font-family: "Quicksand", sans-serif;
+
     background: var(--gradient);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }
@@ -178,7 +180,7 @@ body {
 /* customizing the background color for javascript application*/
 .light {
   background: var(--light-color);
-  color: var(--dark-color);
+  color: var(--dark-bg-color2);
 }
 
 .Nav-wrapper.dark-grey {
@@ -230,7 +232,7 @@ body {
   border-radius: 50%;
   left: 0;
   top: 155px;
-  background: var(--dark-bg-color);
+  background: var(--dark-bg-color2);
   z-index: -1;
   animation: object1 3s linear infinite;
 }
@@ -249,7 +251,7 @@ body {
   position: absolute;
   left: 9.5%;
   top: 15%;
-  background: var(--dark-bg-color);
+  background: var(--dark-bg-color2);
   z-index: -2;
   animation: object2 3s linear infinite;
 }
@@ -269,8 +271,9 @@ body {
   /* styling the animated h1 text */
   h2 {
     background: var(--gradient);
-    background-clip: text;
+
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
     top: 0;
@@ -290,7 +293,7 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color2);
   border-left: 2px solid var(--light-color);
   animation: typing 3s steps(9) infinite;
 }
@@ -366,9 +369,9 @@ body {
 
 /* when clicked on */
 .hire-me:active {
-  transform: scale(0.92);
   -ms-transform: scale(0.92);
   -webkit-transform: scale(0.92);
+  transform: scale(0.92);
 }
 
 .ProfilePic {
@@ -417,9 +420,10 @@ header {
   padding: 1rem;
   font-size: 2.5rem;
   font-weight: bold;
+
   background: var(--gradient);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
@@ -427,8 +431,8 @@ header {
 /* styling header color for light mode using JS*/
 header.header-bg-light {
   background: var(--dark-bg-color);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -543,8 +547,8 @@ header.header-bg-light {
   h2 {
     margin-bottom: 1rem;
     background: var(--gradient);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -630,9 +634,9 @@ header.header-bg-light {
   }
 
   a:active img {
-    transform: scale(0.92);
     -ms-transform: scale(0.92);
     -webkit-transform: scale(0.92);
+    transform: scale(0.92);
   }
 }
 
@@ -683,16 +687,42 @@ header.header-bg-light {
   .skill-bar {
     height: 6px;
     background-color: #282828;
+    margin: 0 1rem;
     border-radius: 3px;
-  }
 
-  .skill-percentage {
-    position: relative;
-    color: orangered;
-    height: 5px;
-    background-image: var(--gradient);
-    border-radius: 3px;
-    animation: skillAnimation 2.5s 1;
+    .skill-percentage {
+      position: relative;
+      color: orangered;
+      height: 5px;
+      background-image: var(--gradient);
+      border-radius: 3px;
+      animation: skillAnimation 2.5s 1;
+    }
+
+    .HTML {
+      max-width: 95%;
+    }
+    .CSS {
+      max-width: 90%;
+    }
+    .JS {
+      max-width: 88%;
+    }
+    .React-JS {
+      max-width: 85%;
+    }
+    .Typescript {
+      max-width: 75%;
+    }
+    .PHP {
+      max-width: 88%;
+    }
+    .MYSQL {
+      max-width: 78%;
+    }
+    .Adobe-illustrator {
+      max-width: 60%;
+    }
   }
 }
 
@@ -819,8 +849,8 @@ header.header-bg-light {
 
   h2 {
     background: var(--gradient);
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: 1rem;
   }

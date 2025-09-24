@@ -63,19 +63,36 @@ const sectionHeaders = $$<HTMLElement>("main header");
  * - Changes theme button icon.
  */
 
-on(themeBtn, "click", () => {
-  const lightOn = document.body.classList.toggle("light");
+// ---------- theme toggle with localStorage ----------
 
-  nav?.classList.toggle("dark-grey");
-  footer?.classList.toggle("footer-bgColor");
-  sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", lightOn));
+const THEME_KEY = "site-theme";
 
-  if (themeBtn)
-    themeBtn.src = lightOn
+function applyTheme(isLight: boolean): void {
+  document.body.classList.toggle("light", isLight);
+  nav?.classList.toggle("dark-grey", isLight);
+  footer?.classList.toggle("footer-bgColor", isLight);
+  sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", isLight));
+
+  if (themeBtn) {
+    themeBtn.src = isLight
       ? "./assets/Icons/moon.png"
       : "./assets/Icons/sun.png";
+  }
 
   document.body.style.transition = "background 0.2s linear, color 0.2s linear";
+}
+
+// Initialize theme from localStorage (default = dark)
+const savedTheme = localStorage.getItem(THEME_KEY);
+const isLight = savedTheme === "light";
+applyTheme(isLight);
+
+on(themeBtn, "click", () => {
+  const lightOn = !document.body.classList.contains("light");
+  applyTheme(lightOn);
+
+  // Save theme to localStorage
+  localStorage.setItem(THEME_KEY, lightOn ? "light" : "dark");
 });
 
 // ---------- sticky nav ----------
