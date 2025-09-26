@@ -2,6 +2,9 @@
    RESET & BASE
 ========================== */
 
+/*  Importing Google font - Quicksand */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
 /* Universal selector or Global styling */
 *,
 ::before,
@@ -11,7 +14,7 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: quicksand, sans-serif;
 }
 
 :root {
@@ -851,6 +854,10 @@ header.header-bg-light {
   transition: 0.9s;
   border: 1px solid black;
   box-shadow: 5px 5px 10px black;
+
+  /* transition: transform 0.2s ease; */
+  transform-style: preserve-3d;
+  will-change: transform;
 
   img {
     width: 8rem;

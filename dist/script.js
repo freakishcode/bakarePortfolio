@@ -1,5 +1,7 @@
 "use strict";
+// =======================================
 // TODO: TYPESCRIPT
+// =======================================
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -10,7 +12,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 // ---------- tiny helpers ----------
-/* *
+/**
  * Tiny helpers for DOM selection and event handling.
  * - `$`: Selects a single element matching the selector.
  * - `$$`: Selects all elements matching the selector as an array.
@@ -21,7 +23,9 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 function on(el, type, handler, options) {
     el === null || el === void 0 ? void 0 : el.addEventListener(type, handler, options);
 }
-// TODO: JAVASCRIPT
+// =======================================
+// TODO: JAVASCRIPT CORE
+// =======================================
 // ---------- core DOM references ----------
 const themeBtn = $("#theme");
 const nav = $("#Nav-wrapper");
@@ -32,12 +36,11 @@ const hello = $("#hello");
 const introDetails = $(".intro-details");
 const DownloadCV = $(".Download-CV");
 const sectionHeaders = $$("main header");
-// ---------- theme toggle with localStorage + system preference ----------
-/* *
- * Theme toggle:
- * - Toggles between light and dark themes.
- * - Updates navigation, footer, and section header styles.
- * - Changes theme button icon.
+// =======================================
+// THEME TOGGLE
+// =======================================
+/**
+ * Theme toggle with localStorage + system preference.
  */
 const THEME_KEY = "site-theme";
 function applyTheme(isLight) {
@@ -61,33 +64,24 @@ function getInitialTheme() {
         return true;
     if (savedTheme === "dark")
         return false;
-    // Fallback: check system preference
+    // Fallback to system preference
     return !window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
-// Initialize theme
+// Init theme
 let isLight = getInitialTheme();
 applyTheme(isLight);
 on(themeBtn, "click", () => {
     isLight = !isLight;
     applyTheme(isLight);
-    // Save user preference
     localStorage.setItem(THEME_KEY, isLight ? "light" : "dark");
 });
-// ---------- sticky nav ----------
-/* *
- * Sticky navigation:
- * - Adds/removes sticky class to navigation on scroll.
- */
-on(window, "scroll", () => {
-    nav === null || nav === void 0 ? void 0 : nav.classList.toggle("sticky", window.scrollY > 20);
-}, { passive: true });
-// ---------- mobile menu ----------
-/*
- * Mobile menu:
- * - Handles toggling of mobile navigation menu.
- * - Updates ARIA attributes for accessibility.
- * - Closes menu on navigation link click.
- */
+// =======================================
+// STICKY NAV
+// =======================================
+on(window, "scroll", () => nav === null || nav === void 0 ? void 0 : nav.classList.toggle("sticky", window.scrollY > 20), { passive: true });
+// =======================================
+// MOBILE MENU
+// =======================================
 if (toggler && navbar) {
     toggler.setAttribute("aria-controls", "navbar");
     toggler.setAttribute("aria-expanded", "false");
@@ -103,11 +97,9 @@ if (toggler && navbar) {
         toggler.setAttribute("aria-expanded", "false");
     }));
 }
-// ---------- reveal animations ----------
-/* *
- * Reveal animations:
- * - Uses IntersectionObserver to reveal hidden elements when in view.
- */
+// =======================================
+// REVEAL ANIMATIONS
+// =======================================
 const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -117,11 +109,9 @@ const revealObserver = new IntersectionObserver((entries, obs) => {
     });
 }, { threshold: 0.15 });
 $$(".hidden").forEach((el) => revealObserver.observe(el));
-// ---------- project video preview ----------
-/* *
- * Project video preview:
- * - Plays video on mouse enter, pauses on mouse leave for preview videos.
- */
+// =======================================
+// PROJECT VIDEO PREVIEW
+// =======================================
 function initProjectVideoPreview() {
     $$(".preview-video").forEach((video) => {
         on(video, "mouseenter", () => video.play());
@@ -129,20 +119,16 @@ function initProjectVideoPreview() {
     });
 }
 on(document, "DOMContentLoaded", initProjectVideoPreview);
-// ---------- services animation ----------
-/* *
- * Services animation:
- * - Animates service elements when they enter the viewport.
- */
+// =======================================
+// SERVICES ANIMATION
+// =======================================
 const servicesObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => entry.target.classList.toggle("showAnimate", entry.isIntersecting));
 }, { threshold: 0.12 });
 $$(".animate-service").forEach((el) => servicesObserver.observe(el));
-// ---------- dynamic year update ----------
-/* *
- * Dynamic year update:
- * - Updates copyright year text automatically.
- */
+// =======================================
+// DYNAMIC YEAR UPDATE
+// =======================================
 function updateYear() {
     const yearText = $("#year-text");
     if (yearText)
@@ -150,13 +136,9 @@ function updateYear() {
 }
 updateYear();
 setInterval(updateYear, 1000 * 60 * 60);
-// ---------- modal (contact) ----------
-/* *
- * Modal (contact):
- * - Handles opening and closing of modal popup.
- * - Displays messages with color and optional auto-close.
- * - Closes modal on button, overlay click, or Escape key.
- */
+// =======================================
+// MODAL (CONTACT)
+// =======================================
 const modal = $("#modal-popup");
 const overlay = $(".overlay", modal || undefined);
 const closeBtn = $("#closeBtn");
@@ -171,9 +153,8 @@ function openModal(message, color, autoClose = false) {
     modal.classList.add("action");
     if (autoCloseTimer)
         clearTimeout(autoCloseTimer);
-    if (autoClose) {
+    if (autoClose)
         autoCloseTimer = window.setTimeout(closeModal, 3000);
-    }
 }
 function closeModal() {
     modal === null || modal === void 0 ? void 0 : modal.classList.remove("action");
@@ -187,12 +168,9 @@ on(document, "keydown", (e) => {
     if (e.key === "Escape")
         closeModal();
 });
-// ---------- contact form (Third party:FormSpree) ----------
-/* *
- * Contact form (FormSpree):
- * - Submits contact form via AJAX.
- * - Shows modal feedback for success or error.
- */
+// =======================================
+// CONTACT FORM (FORMSPREE)
+// =======================================
 const contactForm = $("#contactForm");
 on(contactForm, "submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
     e.preventDefault();
@@ -218,3 +196,27 @@ on(contactForm, "submit", (e) => __awaiter(void 0, void 0, void 0, function* () 
         openModal("❌ Network error. Please try again.", "red");
     }
 }));
+// =======================================
+// SERVICE CARD 3D TILT
+// =======================================
+const serviceCards = document.querySelectorAll(".service-box");
+serviceCards.forEach((card) => {
+    on(card, "mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const halfWidth = rect.width / 2;
+        const halfHeight = rect.height / 2;
+        const centerX = rect.left + halfWidth;
+        const centerY = rect.top + halfHeight;
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+        const maxDistance = Math.max(halfWidth, halfHeight);
+        const degree = (distance * 10) / maxDistance;
+        const rx = deltaY / halfHeight;
+        const ry = deltaX / halfWidth;
+        card.style.transform = `perspective(400px) rotate3d(${-rx}, ${ry}, 0, ${degree}deg)`;
+    });
+    on(card, "mouseleave", () => {
+        card.style.transform = "";
+    });
+});

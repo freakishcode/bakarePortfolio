@@ -1,7 +1,9 @@
+// =======================================
 // TODO: TYPESCRIPT
+// =======================================
 
 // ---------- tiny helpers ----------
-/* *
+/**
  * Tiny helpers for DOM selection and event handling.
  * - `$`: Selects a single element matching the selector.
  * - `$$`: Selects all elements matching the selector as an array.
@@ -17,7 +19,7 @@ const $$ = <T extends HTMLElement>(
   root: Document | HTMLElement = document
 ): T[] => Array.from(root.querySelectorAll<T>(sel));
 
-// Strongly typed `on` helper for HTMLElement, Document, and Window
+// Strongly typed `on` helper
 function on<K extends keyof HTMLElementEventMap>(
   el: HTMLElement | null,
   type: K,
@@ -45,7 +47,9 @@ function on(
   el?.addEventListener(type, handler, options);
 }
 
-// TODO: JAVASCRIPT
+// =======================================
+// TODO: JAVASCRIPT CORE
+// =======================================
 
 // ---------- core DOM references ----------
 const themeBtn = $("#theme") as HTMLImageElement | null;
@@ -58,12 +62,11 @@ const introDetails = $(".intro-details");
 const DownloadCV = $(".Download-CV");
 const sectionHeaders = $$<HTMLElement>("main header");
 
-// ---------- theme toggle with localStorage + system preference ----------
-/* *
- * Theme toggle:
- * - Toggles between light and dark themes.
- * - Updates navigation, footer, and section header styles.
- * - Changes theme button icon.
+// =======================================
+// THEME TOGGLE
+// =======================================
+/**
+ * Theme toggle with localStorage + system preference.
  */
 const THEME_KEY = "site-theme";
 
@@ -87,48 +90,36 @@ function applyTheme(isLight: boolean): void {
 
 function getInitialTheme(): boolean {
   const savedTheme = localStorage.getItem(THEME_KEY);
-
   if (savedTheme === "light") return true;
   if (savedTheme === "dark") return false;
 
-  // Fallback: check system preference
+  // Fallback to system preference
   return !window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
-// Initialize theme
+// Init theme
 let isLight = getInitialTheme();
 applyTheme(isLight);
 
 on(themeBtn, "click", () => {
   isLight = !isLight;
   applyTheme(isLight);
-
-  // Save user preference
   localStorage.setItem(THEME_KEY, isLight ? "light" : "dark");
 });
 
-// ---------- sticky nav ----------
-/* *
- * Sticky navigation:
- * - Adds/removes sticky class to navigation on scroll.
- */
+// =======================================
+// STICKY NAV
+// =======================================
 on(
   window,
   "scroll",
-  () => {
-    nav?.classList.toggle("sticky", window.scrollY > 20);
-  },
+  () => nav?.classList.toggle("sticky", window.scrollY > 20),
   { passive: true }
 );
 
-// ---------- mobile menu ----------
-/*
- * Mobile menu:
- * - Handles toggling of mobile navigation menu.
- * - Updates ARIA attributes for accessibility.
- * - Closes menu on navigation link click.
- */
-
+// =======================================
+// MOBILE MENU
+// =======================================
 if (toggler && navbar) {
   toggler.setAttribute("aria-controls", "navbar");
   toggler.setAttribute("aria-expanded", "false");
@@ -149,12 +140,9 @@ if (toggler && navbar) {
   );
 }
 
-// ---------- reveal animations ----------
-/* *
- * Reveal animations:
- * - Uses IntersectionObserver to reveal hidden elements when in view.
- */
-
+// =======================================
+// REVEAL ANIMATIONS
+// =======================================
 const revealObserver = new IntersectionObserver(
   (entries, obs) => {
     entries.forEach((entry) => {
@@ -169,12 +157,9 @@ const revealObserver = new IntersectionObserver(
 
 $$<HTMLElement>(".hidden").forEach((el) => revealObserver.observe(el));
 
-// ---------- project video preview ----------
-/* *
- * Project video preview:
- * - Plays video on mouse enter, pauses on mouse leave for preview videos.
- */
-
+// =======================================
+// PROJECT VIDEO PREVIEW
+// =======================================
 function initProjectVideoPreview() {
   $$<HTMLVideoElement>(".preview-video").forEach((video) => {
     on(video, "mouseenter", () => video.play());
@@ -183,13 +168,9 @@ function initProjectVideoPreview() {
 }
 on(document, "DOMContentLoaded", initProjectVideoPreview);
 
-// ---------- services animation ----------
-
-/* *
- * Services animation:
- * - Animates service elements when they enter the viewport.
- */
-
+// =======================================
+// SERVICES ANIMATION
+// =======================================
 const servicesObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) =>
@@ -206,12 +187,9 @@ $$<HTMLElement>(".animate-service").forEach((el) =>
   servicesObserver.observe(el)
 );
 
-// ---------- dynamic year update ----------
-/* *
- * Dynamic year update:
- * - Updates copyright year text automatically.
- */
-
+// =======================================
+// DYNAMIC YEAR UPDATE
+// =======================================
 function updateYear() {
   const yearText = $("#year-text");
   if (yearText)
@@ -220,15 +198,9 @@ function updateYear() {
 updateYear();
 setInterval(updateYear, 1000 * 60 * 60);
 
-// ---------- modal (contact) ----------
-
-/* *
- * Modal (contact):
- * - Handles opening and closing of modal popup.
- * - Displays messages with color and optional auto-close.
- * - Closes modal on button, overlay click, or Escape key.
- */
-
+// =======================================
+// MODAL (CONTACT)
+// =======================================
 const modal = $("#modal-popup");
 const overlay = $(".overlay", modal || undefined);
 const closeBtn = $("#closeBtn");
@@ -245,9 +217,7 @@ function openModal(message: string, color: string, autoClose = false) {
   modal.classList.add("action");
 
   if (autoCloseTimer) clearTimeout(autoCloseTimer);
-  if (autoClose) {
-    autoCloseTimer = window.setTimeout(closeModal, 3000);
-  }
+  if (autoClose) autoCloseTimer = window.setTimeout(closeModal, 3000);
 }
 
 function closeModal() {
@@ -262,13 +232,9 @@ on(document, "keydown", (e: KeyboardEvent) => {
   if (e.key === "Escape") closeModal();
 });
 
-// ---------- contact form (Third party:FormSpree) ----------
-/* *
- * Contact form (FormSpree):
- * - Submits contact form via AJAX.
- * - Shows modal feedback for success or error.
- */
-
+// =======================================
+// CONTACT FORM (FORMSPREE)
+// =======================================
 const contactForm = $("#contactForm") as HTMLFormElement | null;
 
 on(contactForm, "submit", async (e: Event) => {
@@ -294,4 +260,36 @@ on(contactForm, "submit", async (e: Event) => {
     console.error(err);
     openModal("❌ Network error. Please try again.", "red");
   }
+});
+
+// =======================================
+// SERVICE CARD 3D TILT
+// =======================================
+const serviceCards = document.querySelectorAll<HTMLElement>(".service-box");
+
+serviceCards.forEach((card) => {
+  on(card, "mousemove", (e: MouseEvent) => {
+    const rect = card.getBoundingClientRect();
+    const halfWidth = rect.width / 2;
+    const halfHeight = rect.height / 2;
+
+    const centerX = rect.left + halfWidth;
+    const centerY = rect.top + halfHeight;
+
+    const deltaX = e.clientX - centerX;
+    const deltaY = e.clientY - centerY;
+
+    const distance = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+    const maxDistance = Math.max(halfWidth, halfHeight);
+
+    const degree = (distance * 10) / maxDistance;
+    const rx = deltaY / halfHeight;
+    const ry = deltaX / halfWidth;
+
+    card.style.transform = `perspective(400px) rotate3d(${-rx}, ${ry}, 0, ${degree}deg)`;
+  });
+
+  on(card, "mouseleave", () => {
+    card.style.transform = "";
+  });
 });
