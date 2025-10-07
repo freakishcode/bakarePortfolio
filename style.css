@@ -142,7 +142,7 @@ body {
 }
 
 .Nav-wrapper.sticky {
-  background: var(--dark-color);
+  background: var(--dark-bg-color);
 }
 
 .themeToggler {
@@ -187,7 +187,7 @@ body {
 }
 
 .Nav-wrapper.dark-grey {
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color2);
   border-bottom: 3px solid transparent;
 }
 
@@ -329,7 +329,7 @@ body {
   cursor: pointer;
   text-align: center;
 
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color2);
   border-radius: 7px;
 
   position: relative;
@@ -784,8 +784,8 @@ header.header-bg-light {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   place-items: center;
-  gap: 1.7rem;
-  padding: 8rem 2.5rem;
+  gap: 1.8rem;
+  padding: 2.5rem;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
 
   /* video container */
@@ -882,7 +882,7 @@ header.header-bg-light {
 
 .service-box:hover {
   scale: 0.95;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), var(--dark-bg-color));
 }
 
 /* animation for the service boxes */
@@ -1019,7 +1019,7 @@ header.header-bg-light {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: var(--orange);
+  background-color: var(--dark-bg-color);
   color: #fff;
   box-shadow: 7px 7px 5px #101010;
   transition: ease-in-out 0.3s;
@@ -1079,7 +1079,7 @@ header.header-bg-light {
     align-items: center;
     padding: 1rem;
     border-bottom: 2px solid #101010;
-    background-color: var(--dark-bg-color);
+    background-color: var(--dark-bg-color2);
     color: #fff;
     border-radius: 10px 10px 0 0;
   }
@@ -1131,7 +1131,7 @@ header.header-bg-light {
   font-weight: bold;
   width: 10rem;
   border-radius: 10px;
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color2);
 }
 
 .okayBtn:hover {
@@ -1172,7 +1172,7 @@ footer {
 
 /* customizing footer for background switch theme */
 footer.footer-bgColor {
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color2);
   border-top: 3px solid transparent;
 }
 
