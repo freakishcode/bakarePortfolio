@@ -1284,6 +1284,7 @@ footer.footer-bgColor {
   }
 
   .RESUME {
+    padding: 1rem 0.3rem;
     gap: 2rem;
   }
 
@@ -1309,7 +1310,7 @@ footer.footer-bgColor {
   }
 
   .summary {
-    padding: 0 1rem;
+    padding: 0 0.2rem;
   }
 
   /* disable profile DP in about me for all mobile phones */
@@ -1334,7 +1335,7 @@ footer.footer-bgColor {
 
   /* Styling Skills part */
   .SkillBoxContainer {
-    width: 92%;
+    width: 95%;
     height: 90dvh;
 
     grid-template-columns: 1fr;
