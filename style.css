@@ -1283,8 +1283,12 @@ footer.footer-bgColor {
     filter: blur(5px);
   }
 
+  .summary-about-me {
+    padding: 0 0.3rem;
+  }
+
   .RESUME {
-    padding: 1rem 0.3rem;
+    padding: 1rem 0;
     gap: 2rem;
   }
 
@@ -1310,7 +1314,7 @@ footer.footer-bgColor {
   }
 
   .summary {
-    padding: 0 0.2rem;
+    padding: 0 0.1rem;
   }
 
   /* disable profile DP in about me for all mobile phones */
