@@ -394,6 +394,10 @@ body {
   bottom: 0;
   right: 100px;
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
   img {
     height: 100%;
     position: absolute;
@@ -402,6 +406,16 @@ body {
     transform: translateX(-50%);
     transition: bottom 1s, left 1s;
   }
+}
+
+/* styling the loading text for profile image */
+.loading-text {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
 }
 
 .me {

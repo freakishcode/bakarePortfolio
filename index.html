@@ -102,16 +102,20 @@
 
         <!-- Profile Image -->
         <div class="ProfilePic">
+          <!-- lazy Loading image spinner  -->
+          <p class="loading-text">Loading Profile image...</p>
+
           <img
             src="./assets/Profile_picture/shape-3.png"
             alt="Decorative shape"
             class="shape"
             loading="lazy"
+            onload="this.previousElementSibling.style.display='none'"
           />
           <img
             class="me"
             src="./assets/Profile_picture/native2.png"
-            alt="Olayemi Bakare"
+            alt="Olayemi A. Bakare Profile Picture"
             loading="lazy"
           />
         </div>
