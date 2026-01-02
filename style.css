@@ -14,7 +14,7 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: quicksand, sans-serif;
+  /* font-family: quicksand, sans-serif; */
 }
 
 :root {
@@ -40,11 +40,32 @@ html {
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  background-color: var(--dark-bg-color2);
-  color: var(--light-color);
-  /* min-height: 300rem; */
+  background: linear-gradient(
+    135deg,
+    #2b1a3d 0%,
+    #150d1e 45%,
+    rgba(99, 102, 241, 0.96) 100%
+  );
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+
+  /* Optional but recommended */
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .Nav-wrapper {
