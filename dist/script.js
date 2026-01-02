@@ -89,8 +89,8 @@ function applyTheme(isLight) {
   sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", isLight));
   if (themeBtn) {
     themeBtn.src = isLight
-      ? "./assets/Icons/others/moon.png"
-      : "./assets/Icons/others/sun.png";
+      ? "./assets/Icons/Others/moon.png"
+      : "./assets/Icons/Others/sun.png";
   }
   document.body.style.transition = "background 0.2s linear, color 0.2s linear";
 }
