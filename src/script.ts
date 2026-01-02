@@ -81,8 +81,8 @@ function applyTheme(isLight: boolean): void {
 
   if (themeBtn) {
     themeBtn.src = isLight
-      ? "./assets/Icons/moon.png"
-      : "./assets/Icons/sun.png";
+      ? "./assets/Icons/others/moon.png"
+      : "./assets/Icons/others/sun.png";
   }
 
   document.body.style.transition = "background 0.2s linear, color 0.2s linear";

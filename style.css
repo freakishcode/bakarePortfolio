@@ -627,7 +627,7 @@ header.header-bg-light {
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
-    /* border-radius: 10px; */
+    border-radius: 1rem;
     width: 180px;
     padding: 0.5rem;
     box-shadow: 7px 9px 17px #101010;
@@ -647,7 +647,6 @@ header.header-bg-light {
 }
 
 .Download-CV:hover {
-  background: var(--dark-color);
   scale: 1.1;
 }
 
@@ -1052,9 +1051,10 @@ header.header-bg-light {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: var(--dark-bg-color);
+  background-color: inherit;
   color: #fff;
   box-shadow: 7px 7px 5px #101010;
+  color: orangered;
   transition: ease-in-out 0.3s;
 
   img {
@@ -1064,14 +1064,13 @@ header.header-bg-light {
 
 .form-submit-btn:hover {
   scale: 1.1;
-  background-color: var(--dark-color);
+  color: #fff;
+  background-color: #62487f;
 }
 
 .form-submit-btn:active {
   scale: 0.92;
-  border: none;
-  outline: none;
-  background-color: #62487f;
+  background-color: var(--dark-bg-color2);
 }
 
 .modal {
@@ -1188,7 +1187,7 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   color: #fff;
-  background-color: var(--dark-color);
+  background-color: var(--dark-bg-color);
   border-top: 1px solid transparent;
   border-image: var(--gradient3);
   border-image-slice: 1;
