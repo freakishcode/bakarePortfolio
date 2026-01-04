@@ -408,126 +408,427 @@
       <div class="My-Project hidden" id="project">
         <header>MY PROJECT</header>
 
-        <div class="cards">
-          <!-- 1st project -->
-          <a class="videoLink" href="https://next-js-blog-iota.vercel.app/">
-            <img
-              src="./assets/Project_Preview/CRUD-thumbnail.jpeg"
-              class="thumbNail-1"
-              alt="Blog project demo thumbnail"
-            />
-            <video
-              src="./assets/Project_Preview/CRUD-demo.mp4"
-              muted
-              loop
-              class="preview-video"
-            ></video>
-            <h2>Blog App</h2>
-          </a>
+        <div class="container">
+          <section class="cards" aria-label="Project previews">
+            <!-- Project Card Template: image, title, short desc, tags, actions, hidden meta -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/CRUD-thumbnail.jpeg"
+                  alt="Blog project demo thumbnail"
+                />
 
-          <!-- 2nd project -->
-          <a class="videoLink" href="https://weather-api-six-beta.vercel.app/">
-            <img
-              src="./assets/Project_Preview/weatherApp-thumnail.jpeg"
-              class="thumbNail-1"
-              alt="Weather App demo thumbnail"
-            />
-            <video
-              src="./assets/Project_Preview/WeatherAppDemo.mp4"
-              muted
-              loop
-              class="preview-video"
-            ></video>
-            <h2>Weather App</h2>
-          </a>
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/Next_JS-Blog"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Blog App in new tab"
+                  data-href="https://next-js-blog-iota.vercel.app/"
+                >
+                  Open
+                </button>
+              </figure>
 
-          <!-- 3rd project -->
-          <a class="videoLink" href="https://news-api-psi-five.vercel.app/">
-            <img
-              src="./assets/Project_Preview/NEWS-Thumbnail.png"
-              class="thumbNail-1"
-              alt="News App demo thumbnail"
-            />
-            <video
-              src="./assets/Project_Preview/NEWSappDEMO.mp4"
-              muted
-              loop
-              class="preview-video"
-            ></video>
-            <h2>News App</h2>
-          </a>
+              <div class="card-body">
+                <h3 class="card-title">Blog App</h3>
+                <p class="card-desc">
+                  A full-stack blog application showcasing CRUD, authentication,
+                  and responsive UI.
+                </p>
+                <ul class="card-tags">
+                  <li>Next.js</li>
+                  <li>Tailwind</li>
+                  <li>PHP</li>
+                  <li>MySQL</li>
+                </ul>
+              </div>
+            </article>
 
-          <!-- 4th project -->
-          <a
-            class="videoLink"
-            href="https://freakishcode.github.io/my-multi-site/Medical_Website-northwestern-medicine/"
-          >
-            <img
-              src="./assets/Project_Preview/medical-website-thumbnail.png"
-              class="thumbNail-1"
-              alt="Medical website demo thumbnail"
-            />
-            <video
-              src="./assets/Project_Preview/Medical-static-page-demo.mp4"
-              muted
-              loop
-              class="preview-video"
-            ></video>
-            <h2>NorthWest MD(UI)</h2>
-          </a>
+            <!-- Weather App Project Card -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/weatherApp-thumnail.jpeg"
+                  alt="Weather App demo thumbnail"
+                />
 
-          <!-- 5th project -->
-          <a class="videoLink" href="https://movie-api-alpha-opal.vercel.app/">
-            <img
-              src="./assets/Project_Preview/MovieTrailer-Thumbnail.jpeg"
-              class="thumbNail-1"
-              alt="Movie Trailer thumbnail"
-            />
-            <video src="" muted loop class="preview-video"></video>
-            <h2>Movie Trailer App</h2>
-          </a>
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/Weather-Api"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Weather App in new tab"
+                  data-href="https://weather-api-six-beta.vercel.app/"
+                >
+                  Open
+                </button>
+              </figure>
 
-          <!-- 6th project -->
-          <a
-            class="videoLink"
-            href="https://freakishcode.github.io/my-multi-site/PhotoEditor/"
-          >
-            <img
-              src="./assets/Project_Preview/Photo-Edictor-Thumbnail.png"
-              class="thumbNail-1"
-              alt="Photo Editor Thumbnail"
-            />
-            <video src="" muted loop class="preview-video"></video>
-            <h2>Picture Editor</h2>
-          </a>
+              <div class="card-body">
+                <h3 class="card-title">Weather App</h3>
+                <p class="card-desc">
+                  Real-time weather lookup using public APIs, with location
+                  search and daily forecast cards.
+                </p>
+                <ul class="card-tags">
+                  <li>React JS</li>
+                  <li>OpenWeather</li>
+                  <li>API</li>
+                </ul>
+              </div>
+            </article>
 
-          <!-- 7th project -->
-          <a
-            class="videoLink"
-            href="https://freakishcode.github.io/my-multi-site/DigitalClock/"
-          >
-            <img
-              src="./assets/Project_Preview/Digital-clock.png"
-              class="thumbNail-1"
-              alt="Digital-clock thumbnail"
-            />
-            <video src="" muted loop class="preview-video"></video>
-            <h2>Digital Clock</h2>
-          </a>
+            <!-- News App Project Card -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/NEWS-Thumbnail.png"
+                  alt="News App demo thumbnail"
+                />
 
-          <!-- 8th project -->
-          <a
-            class="videoLink"
-            href="https://freakishcode.github.io/my-multi-site/MovieInfoWebsite/"
-          >
-            <img
-              src="./assets/Project_Preview/Movie-info-thumbnail.png"
-              class="thumbNail-1"
-              alt="MovieInfoWebsite"
-            />
-            <video src="" muted loop class="preview-video"></video>
-            <h2>Movie Info Website</h2>
-          </a>
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/news-api"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open News App in new tab"
+                  data-href="https://news-api-psi-five.vercel.app/"
+                >
+                  Open
+                </button>
+              </figure>
+
+              <div class="card-body">
+                <h3 class="card-title">News App</h3>
+                <p class="card-desc">
+                  Aggregates headlines and articles across topics with a minimal
+                  and fast UI.
+                </p>
+                <ul class="card-tags">
+                  <li>React JS</li>
+                  <li>NewsAPI</li>
+                  <li>Responsive</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/medical-website-thumbnail.png"
+                  alt="Medical website demo thumbnail"
+                />
+
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/Next_JS-Blog"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Medical UI in new tab"
+                  data-href="https://freakishcode.github.io/my-multi-site/Medical_Website-northwestern-medicine/"
+                >
+                  Open
+                </button>
+              </figure>
+              <div class="card-body">
+                <h3 class="card-title">NorthWest MD (UI)</h3>
+                <p class="card-desc">
+                  Static medical UI with accessible layout and clean typography.
+                </p>
+                <ul class="card-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Responsive</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Movie Info Website Project Card  -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/MovieTrailer-Thumbnail.jpeg"
+                  alt="Movie Trailer thumbnail"
+                />
+
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/MovieApi"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Movie Trailer App"
+                  data-href="https://movie-api-alpha-opal.vercel.app/"
+                >
+                  Open
+                </button>
+              </figure>
+              <div class="card-body">
+                <h3 class="card-title">Movie Trailer App</h3>
+                <p class="card-desc">
+                  Browse movie trailers and details with an API-powered
+                  interface.
+                </p>
+                <ul class="card-tags">
+                  <li>React JS</li>
+                  <li>TMDB</li>
+                  <li>API</li>
+                </ul>
+              </div>
+            </article>
+
+            <!--  Picture Editor Project Card -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/Photo-Edictor-Thumbnail.png"
+                  alt="Photo Editor Thumbnail"
+                />
+
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/Next_JS-Blog"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Picture Editor"
+                  data-href="https://freakishcode.github.io/my-multi-site/PhotoEditor/"
+                >
+                  Open
+                </button>
+              </figure>
+              <div class="card-body">
+                <h3 class="card-title">Picture Editor</h3>
+                <p class="card-desc">
+                  Client-side photo editor with filters and basic
+                  transformations.
+                </p>
+                <ul class="card-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>Canvas</li>
+                </ul>
+              </div>
+            </article>
+
+            <!--   Digital Clock Project Card -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/Digital-clock.png"
+                  alt="Digital-clock thumbnail"
+                />
+
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/Next_JS-Blog"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Digital Clock"
+                  data-href="https://freakishcode.github.io/my-multi-site/DigitalClock/"
+                >
+                  Open
+                </button>
+              </figure>
+              <div class="card-body">
+                <h3 class="card-title">Digital Clock</h3>
+                <p class="card-desc">
+                  Lightweight clock UI with theme toggle and alarm example.
+                </p>
+                <ul class="card-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Vanilla JS</li>
+                </ul>
+              </div>
+            </article>
+
+            <!--  Movie Info Website Project Card -->
+            <article class="project-card" tabindex="0">
+              <figure class="card-media">
+                <img
+                  loading="lazy"
+                  src="./assets/Project_Preview/Movie-info-thumbnail.png"
+                  alt="Movie Info Website thumbnail"
+                />
+
+                <a
+                  class="source-link"
+                  href="https://github.com/freakishcode/Next_JS-Blog"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="View source on GitHub"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="18"
+                    height="18"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.69 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.88-.37 2.85-.37.97 0 1.94.12 2.85.37 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.42-2.7 5.4-5.28 5.68.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .31.21.68.8.56C20.71 21.39 24 17.08 24 12 24 5.73 18.27.5 12 .5z"
+                    />
+                  </svg>
+                </a>
+                <button
+                  type="button"
+                  class="media-link"
+                  aria-label="Open Movie Info Website"
+                  data-href="https://freakishcode.github.io/my-multi-site/MovieInfoWebsite/"
+                >
+                  Open
+                </button>
+              </figure>
+              <div class="card-body">
+                <h3 class="card-title">Movie Info Website</h3>
+                <p class="card-desc">
+                  Static site showcasing movie details and poster galleries.
+                </p>
+                <ul class="card-tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Vanilla JS</li>
+                  <li>MovieApi</li>
+                  <li>API</li>
+                </ul>
+              </div>
+            </article>
+          </section>
         </div>
       </div>
 

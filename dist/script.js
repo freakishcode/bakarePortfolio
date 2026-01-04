@@ -156,16 +156,28 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.15 }
 );
 $$(".hidden").forEach((el) => revealObserver.observe(el));
+
 // =======================================
-// PROJECT VIDEO PREVIEW
+// PROJECT CARD PREVIEW CONTROLS
 // =======================================
-function initProjectVideoPreview() {
-  $$(".preview-video").forEach((video) => {
-    on(video, "mouseenter", () => video.play());
-    on(video, "mouseleave", () => video.pause());
+function bindPreviewControls() {
+  const cards = document.querySelectorAll(".project-card");
+
+  cards.forEach((card) => {
+    const openBtn = card.querySelector(".media-link");
+
+    if (openBtn) {
+      openBtn.addEventListener("click", (e) => {
+        const href = openBtn.dataset.href;
+        if (href) window.open(href, "_blank", "noopener");
+      });
+    }
   });
 }
-on(document, "DOMContentLoaded", initProjectVideoPreview);
+
+// Details removed — modal is disabled. Keep preview bindings active.
+bindPreviewControls();
+
 // =======================================
 // SERVICES ANIMATION
 // =======================================
@@ -269,7 +281,9 @@ serviceCards.forEach((card) => {
   });
 });
 
-// Collected D.O.M (Document Object Modal)
+// =======================================
+// DYNAMIC TYPING TEXT
+// =======================================
 const typingElement = document.getElementById("typing");
 
 // the typing sentences

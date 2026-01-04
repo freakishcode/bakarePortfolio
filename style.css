@@ -786,61 +786,183 @@ header.header-bg-light {
 
 /* My project Part */
 
-/* .My-Project {
-  border: 2px solid red;
-  padding-top: 5rem;
-} */
+.container {
+  width: min(1100px, 94%);
+  margin: 0 auto;
+}
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  place-items: center;
-  gap: 1.8rem;
-  padding: 2.5rem;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+  align-items: start;
+}
 
-  /* video container */
-  .videoLink {
-    text-align: center;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.9s;
-    border: 1px solid orange;
-    background-color: rgba(0, 0, 0, 0.2);
+.project-card {
+  padding: 0.9rem 0.9rem 1.1rem 0.9rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid rgba(65, 60, 60, 0.479);
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 260ms ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+}
 
-    /* disable the video demo thumbnail only */
-    .thumbNail-1 {
-      display: none;
-    }
+.project-card:focus-within,
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
-    /* customizing the video demo */
-    video {
-      width: 250px;
-      aspect-ratio: 16/10;
-      border-radius: 10px;
-      border-bottom: 1px solid orange;
-    }
+.card-media {
+  border-radius: 0.55rem;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
 
-    /* video title */
-    h2 {
-      padding: 1rem;
-      color: orangered;
-    }
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    h2:hover {
-      color: yellow;
-    }
+.media-link {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* GitHub source icon placed opposite the Open button */
+.source-link {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 8px;
+  padding: 0.38rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+}
+.source-link svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+.source-link:hover,
+.media-link:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  color: var(--accent-2);
+  margin: 0;
+  padding: 0.9rem 0 0.2rem 0;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-tags li {
+  background: rgba(80, 75, 75, 0.479);
+  padding: 0.28rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .card-media {
+    aspect-ratio: 4/3;
+  }
+  .card-desc {
+    font-size: 0.9rem;
+  }
+  .preview-video {
+    height: 140px;
+  }
+  .typewriter {
+    font-size: 1rem;
   }
 }
 
-/* video container on hover*/
-.videoLink:hover {
-  scale: 1.2;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .media-link,
+  .btn,
+  .preview-video,
+  .typewriter {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
-/* video container when clicked on  */
-.videoLink:active {
-  scale: 0.92;
+a:focus-visible {
+  outline: 3px solid rgba(255, 180, 100, 0.18);
+  outline-offset: 3px;
+  border-radius: 8px;
 }
 
 /* styling of services offered by me */
