@@ -633,7 +633,7 @@ header.header-bg-light {
   /* general */
   .sub-title {
     font-weight: bold;
-    color: var(--dark-bg-color2);
+    color: #ff004f;
     font-size: 1.2rem;
   }
 }
@@ -659,7 +659,7 @@ header.header-bg-light {
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
-    border-radius: 1rem;
+
     width: 180px;
     padding: 0.5rem;
     box-shadow: 7px 9px 17px #101010;
@@ -990,7 +990,7 @@ header.header-bg-light {
     cursor: pointer;
 
     h4 {
-      color: var(--orange);
+      color: #ff004f;
     }
   }
 }
@@ -1001,13 +1001,13 @@ header.header-bg-light {
 }
 
 .my-details :is(.email h3, .phone-no h3, .address h3) {
-  color: var(--orange);
+  color: #ff004f;
 }
 
 .my-details span > img {
   width: 50px;
   padding: 0.5em;
-  border: 2px solid var(--orange);
+  border: 2px solid #ff004f;
   border-radius: 50%;
 }
 
@@ -1049,7 +1049,7 @@ header.header-bg-light {
     padding: 0.5rem;
     border-radius: 10px;
     line-height: 1rem;
-    border: 2px solid var(--orange);
+    border: 2px solid #ff004f;
     font-size: 1rem;
     /* caret-color: used to change the change the color of the text cursor */
     caret-color: red;
@@ -1086,7 +1086,7 @@ header.header-bg-light {
   background-color: inherit;
   color: #fff;
   box-shadow: 7px 7px 5px #101010;
-  color: orangered;
+
   transition: ease-in-out 0.3s;
 
   img {
@@ -1096,7 +1096,7 @@ header.header-bg-light {
 
 .form-submit-btn:hover {
   scale: 1.1;
-  color: #fff;
+
   background-color: #62487f;
 }
 
