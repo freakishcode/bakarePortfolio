@@ -33,7 +33,7 @@
 
   --gradient: linear-gradient(45deg, #ff0, #f0f);
   --gradient2: linear-gradient(#dc3a23, #ff004f, #a14545);
-  --gradient3: linear-gradient(45deg, #ff0, #f0f, #00f, #0f0);
+  --gradient3: linear-gradient(45deg, #ff0, #f0f, #0f0);
 }
 
 html {
@@ -47,9 +47,7 @@ body {
     rgba(255, 255, 255, 0.04) 10%,
     rgba(75, 85, 99, 0.96) 45%,
     rgba(75, 85, 99, 0.96) 55%,
-    rgba(99, 102, 241, 0.96) 60%,
-    rgba(99, 102, 241, 0.96) 65%,
-    rgba(139, 92, 246, 0.96) 75%,
+    rgba(139, 92, 246, 0.96) 85%,
     #2b1a3d 95%,
     rgba(21, 13, 30, 0.96) 100%
   );
@@ -218,7 +216,7 @@ body::before {
 
 /* customizing the background color for javascript application*/
 .light {
-  background: var(--light-color);
+  background: #dddddd;
   color: var(--dark-bg-color2);
 }
 
@@ -263,8 +261,6 @@ body::before {
   /* background-color: var(--dark-color); */
 }
 
-.intro-details.text-color-light,
-#hello.text-color-light,
 .Download-CV.text-color-light {
   background: var(--gradient2);
 
@@ -275,7 +271,7 @@ body::before {
 
 /* the typing sentences */
 #typing {
-  background: var(--gradient);
+  background: var(--gradient3);
   margin: 1rem 0;
   -webkit-background-clip: text;
   background-clip: text;
@@ -287,8 +283,10 @@ body::before {
   content: "|";
   animation: blink 1s infinite;
 
-  /* background: #fff; */
-  background: #ff004f;
+  background: var(--dark-bg-color2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* animating the cursor */
