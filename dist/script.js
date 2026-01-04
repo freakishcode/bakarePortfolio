@@ -268,3 +268,38 @@ serviceCards.forEach((card) => {
     card.style.transform = "";
   });
 });
+
+// Collected D.O.M (Document Object Modal)
+const typingElement = document.getElementById("typing");
+
+// the typing sentences
+const sentences = [
+  "Bakare, .A. Olayemi",
+  "a Web Developer",
+  "also a Freelancer",
+];
+
+let sentenceIndex = 0;
+let charIndex = 0;
+
+// adding functionality to the dynamic text
+function type() {
+  if (sentenceIndex < sentences.length) {
+    if (charIndex < sentences[sentenceIndex].length) {
+      typingElement.textContent += sentences[sentenceIndex].charAt(charIndex);
+
+      charIndex++;
+      setTimeout(type, 100);
+    } else {
+      // pause before clearing and moving to next sentence
+      setTimeout(() => {
+        typingElement.textContent = "";
+        charIndex = 0;
+        sentenceIndex = (sentenceIndex + 1) % sentences.length; // loop
+        type();
+      }, 1000);
+    }
+  }
+}
+
+type();

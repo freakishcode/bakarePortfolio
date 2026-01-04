@@ -269,87 +269,34 @@ body::before {
   -webkit-text-fill-color: transparent;
 }
 
-.Text-Header::before {
-  position: absolute;
-  content: "";
-  height: 145px;
-  width: 145px;
-  border-radius: 50%;
-  left: 0;
-  top: 155px;
-  background: var(--dark-bg-color2);
-  z-index: -1;
-  animation: object1 3s linear infinite;
+/* the typing sentences */
+#typing {
+  background: var(--gradient);
+  margin: 1rem 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-@keyframes object1 {
+/* customizing the blinking cursor | and coloring */
+#typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+
+  /* background: #fff; */
+  background: #ff004f;
+}
+
+/* animating the cursor */
+@keyframes blink {
+  0%,
   50% {
-    top: 1%;
+    opacity: 1;
   }
-}
 
-.Text-Header::after {
-  content: "";
-  height: 420px;
-  width: 420px;
-  border-radius: 50%;
-  position: absolute;
-  left: 9.5%;
-  top: 15%;
-  background: var(--dark-bg-color2);
-  z-index: -2;
-  animation: object2 3s linear infinite;
-}
-
-@keyframes object2 {
-  50% {
-    left: 18%;
-    /* top: 12%; */
-  }
-}
-
-.dynamic-text {
-  line-height: 90px;
-  height: 90px;
-  overflow: hidden;
-
-  /* styling the animated h1 text */
-  h2 {
-    background: var(--gradient);
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    top: 0;
-    animation: slide 12s steps(4) infinite;
-  }
-}
-
-@keyframes slide {
+  51%,
   100% {
-    top: -360px;
-  }
-}
-
-.dynamic-text > h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--dark-bg-color2);
-  border-left: 2px solid var(--light-color);
-  animation: typing 3s steps(9) infinite;
-}
-
-@keyframes typing {
-  40%,
-  60% {
-    left: calc(100% + 30px);
-  }
-  100% {
-    left: 0;
+    opacity: 0;
   }
 }
 
@@ -946,7 +893,15 @@ header.header-bg-light {
 
 .service-box:hover {
   scale: 0.95;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), var(--dark-bg-color));
+  background: linear-gradient(
+    135deg,
+    #2b1a3d 25%,
+    rgba(75, 85, 99, 0.96) 65%,
+    rgba(99, 102, 241, 0.96) 80%,
+    rgba(139, 92, 246, 0.96) 90%,
+    rgba(21, 13, 30, 0.96) 100%
+  );
+  transition: 0.3s;
 }
 
 /* animation for the service boxes */
