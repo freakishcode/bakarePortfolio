@@ -43,12 +43,14 @@ html {
 body {
   background: linear-gradient(
     135deg,
-    #2b1a3d 0%,
-    #150d1e 45%,
-    rgba(99, 102, 241, 0.96) 100%
+    #2b1a3d 25%,
+    rgba(75, 85, 99, 0.96) 65%,
+    rgba(99, 102, 241, 0.96) 80%,
+    rgba(139, 92, 246, 0.96) 90%,
+    rgba(21, 13, 30, 0.96) 100%
   );
-  background-size: 300% 300%;
-  animation: gradientShift 12s ease infinite;
+
+  background-attachment: fixed; /* subtle premium feel */
 
   /* Optional but recommended */
   color: #ffffff;
@@ -57,17 +59,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Smooth gradient animation */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* adding a subtle radial gradient effect to the body */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 255, 255, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
 }
 
 /* ==========================
@@ -182,6 +184,10 @@ body {
     box-shadow: -4px -4px 25px 2px var(--pink_like),
       4px 4px 25px 4px var(--yellow);
   }
+}
+
+.themeToggler:active {
+  scale: 0.92;
 }
 
 /* styling hover display on the Switch theme button */
@@ -627,7 +633,7 @@ header.header-bg-light {
   /* general */
   .sub-title {
     font-weight: bold;
-    color: orangered;
+    color: var(--dark-bg-color2);
     font-size: 1.2rem;
   }
 }
