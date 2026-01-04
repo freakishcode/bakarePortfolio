@@ -1084,7 +1084,7 @@ header.header-bg-light {
   justify-content: space-evenly;
   align-items: center;
   background-color: inherit;
-  color: #fff;
+  color: #ff004f;
   box-shadow: 7px 7px 5px #101010;
 
   transition: ease-in-out 0.3s;
@@ -1096,8 +1096,8 @@ header.header-bg-light {
 
 .form-submit-btn:hover {
   scale: 1.1;
-
-  background-color: #62487f;
+  color: var(--light-color);
+  background-color: var(--dark-bg-color2);
 }
 
 .form-submit-btn:active {
