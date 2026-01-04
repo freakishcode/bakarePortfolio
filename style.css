@@ -251,7 +251,7 @@ body::before {
 }
 
 .Text-Header {
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
@@ -273,6 +273,8 @@ body::before {
 #typing {
   background: var(--gradient3);
   margin: 1rem 0;
+
+  font-weight: 900;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -283,7 +285,7 @@ body::before {
   content: "|";
   animation: blink 1s infinite;
 
-  background: var(--dark-bg-color2);
+  background: var(--gradient3);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1069,7 +1071,7 @@ a:focus-visible {
     cursor: pointer;
 
     h4 {
-      color: #ff004f;
+      color: var(--dark-bg-color2);
     }
   }
 }
@@ -1080,13 +1082,13 @@ a:focus-visible {
 }
 
 .my-details :is(.email h3, .phone-no h3, .address h3) {
-  color: #ff004f;
+  color: var(--dark-bg-color2);
 }
 
 .my-details span > img {
   width: 50px;
   padding: 0.5em;
-  border: 2px solid #ff004f;
+  border: 2px solid var(--dark-bg-color2);
   border-radius: 50%;
 }
 
