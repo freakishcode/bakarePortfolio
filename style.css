@@ -251,7 +251,7 @@ body::before {
 }
 
 .Text-Header {
-  width: 55%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
@@ -1071,7 +1071,7 @@ a:focus-visible {
     cursor: pointer;
 
     h4 {
-      color: var(--dark-bg-color2);
+      color: #ff004f;
     }
   }
 }
@@ -1082,13 +1082,13 @@ a:focus-visible {
 }
 
 .my-details :is(.email h3, .phone-no h3, .address h3) {
-  color: var(--dark-bg-color2);
+  color: #ff004f;
 }
 
 .my-details span > img {
   width: 50px;
   padding: 0.5em;
-  border: 2px solid var(--dark-bg-color2);
+  border: 2px solid #ff004f;
   border-radius: 50%;
 }
 
