@@ -484,12 +484,6 @@ header.header-bg-light {
 }
 .RESUME {
   width: 100%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 7rem; */
-
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -498,6 +492,7 @@ header.header-bg-light {
   /* border: 1px solid orange; */
 
   .Ola-card {
+    margin-left: 2rem;
     width: 40dvh;
     height: 40dvh;
     perspective: 1000px;
@@ -799,14 +794,17 @@ header.header-bg-light {
 }
 
 .container {
-  width: min(1100px, 94%);
-  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid orange; */
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 2rem;
   margin: 2rem 0;
   align-items: start;
 }
