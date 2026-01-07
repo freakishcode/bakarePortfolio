@@ -439,7 +439,7 @@ body::before {
   justify-content: center;
   align-items: center;
   /* margin-bottom: 0.5rem; */
-  padding: 1rem 2rem;
+  padding: 1rem;
   /* border: 2px solid orangered; */
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
 }
@@ -466,7 +466,7 @@ header.header-bg-light {
 }
 
 .summary-about-me {
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
   /* border: 2px solid orange; */
 
   .summary {
@@ -484,18 +484,22 @@ header.header-bg-light {
 }
 .RESUME {
   width: 100%;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 7rem; */
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   padding: 1rem;
   /* border: 1px solid orange; */
 
   .Ola-card {
-    width: 250px;
-    height: 260px;
+    width: 40dvh;
+    height: 40dvh;
     perspective: 1000px;
     transform-style: preserve-3d;
   }
@@ -591,12 +595,13 @@ header.header-bg-light {
 
 .PERSONAL-INFO,
 .Edu-And-Exp {
+  width: 50dvh;
   height: 40dvh;
+  /* border: 1px solid yellow; */
 }
 
 .PERSONAL-INFO {
-  display: block;
-  /* border: 1px solid yellow; */
+  /* display: block; */
 
   .profile-description > p {
     display: block;
@@ -638,7 +643,6 @@ header.header-bg-light {
 }
 
 .Edu-And-Exp {
-  /* border: 1px solid red; */
   display: block;
 
   section {
@@ -789,6 +793,10 @@ header.header-bg-light {
 }
 
 /* My project Part */
+.My-Project {
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
+  padding-bottom: 1rem;
+}
 
 .container {
   width: min(1100px, 94%);
@@ -1050,6 +1058,10 @@ a:focus-visible {
 
 .service-box:nth-child(3) {
   transition-delay: 400ms;
+}
+
+.Contact {
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.9);
 }
 
 /* Styling of the contact Me Part */
