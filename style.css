@@ -680,15 +680,13 @@ header.header-bg-light {
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   padding: 0 1rem;
-  border-radius: 1rem;
 
-  width: 100dvw;
+  width: 100%;
   height: 80dvh;
   background-color: rgba(0, 0, 0, 0.2);
   /* border: 1px solid yellow; */
 
   .coding-skill {
-    width: 100%;
     /* background-color: red; */
     cursor: pointer;
   }
