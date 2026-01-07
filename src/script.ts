@@ -11,12 +11,12 @@
  */
 const $ = <T extends HTMLElement>(
   sel: string,
-  root: Document | HTMLElement = document
+  root: ParentNode = document
 ): T | null => root.querySelector<T>(sel);
 
 const $$ = <T extends HTMLElement>(
   sel: string,
-  root: Document | HTMLElement = document
+  root: ParentNode = document
 ): T[] => Array.from(root.querySelectorAll<T>(sel));
 
 // Strongly typed `on` helper
@@ -72,11 +72,11 @@ const THEME_KEY = "site-theme";
 
 function applyTheme(isLight: boolean): void {
   document.body.classList.toggle("light", isLight);
-  nav?.classList.toggle("dark-grey", isLight);
-  hello?.classList.toggle("text-color-light", isLight);
-  introDetails?.classList.toggle("text-color-light", isLight);
-  DownloadCV?.classList.toggle("text-color-light", isLight);
-  footer?.classList.toggle("footer-bgColor", isLight);
+  nav?.classList?.toggle("dark-grey", isLight);
+  hello?.classList?.toggle("text-color-light", isLight);
+  introDetails?.classList?.toggle("text-color-light", isLight);
+  DownloadCV?.classList?.toggle("text-color-light", isLight);
+  footer?.classList?.toggle("footer-bgColor", isLight);
   sectionHeaders.forEach((h) => h.classList.toggle("header-bg-light", isLight));
 
   if (themeBtn) {
@@ -113,7 +113,7 @@ on(themeBtn, "click", () => {
 on(
   window,
   "scroll",
-  () => nav?.classList.toggle("sticky", window.scrollY > 20),
+  () => nav?.classList?.toggle("sticky", window.scrollY > 20),
   { passive: true }
 );
 
@@ -144,7 +144,7 @@ if (toggler && navbar) {
 // REVEAL ANIMATIONS
 // =======================================
 const revealObserver = new IntersectionObserver(
-  (entries, obs) => {
+  (entries: IntersectionObserverEntry[], obs: IntersectionObserver) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         (entry.target as HTMLElement).classList.add("show");
@@ -158,21 +158,30 @@ const revealObserver = new IntersectionObserver(
 $$<HTMLElement>(".hidden").forEach((el) => revealObserver.observe(el));
 
 // =======================================
-// PROJECT VIDEO PREVIEW
+//  PROJECT CARD PREVIEW CONTROLS
 // =======================================
-function initProjectVideoPreview() {
-  $$<HTMLVideoElement>(".preview-video").forEach((video) => {
-    on(video, "mouseenter", () => video.play());
-    on(video, "mouseleave", () => video.pause());
+function bindPreviewControls(): void {
+  const cards = document.querySelectorAll<HTMLElement>(".project-card");
+
+  cards.forEach((card) => {
+    const openBtn = card.querySelector<HTMLAnchorElement>(".media-link");
+
+    if (openBtn) {
+      openBtn.addEventListener("click", () => {
+        const href = openBtn.dataset.href;
+        if (href) window.open(href, "_blank", "noopener");
+      });
+    }
   });
 }
-on(document, "DOMContentLoaded", initProjectVideoPreview);
+// Details removed — modal is disabled. Keep preview bindings active.
+bindPreviewControls();
 
 // =======================================
 // SERVICES ANIMATION
 // =======================================
 const servicesObserver = new IntersectionObserver(
-  (entries) => {
+  (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) =>
       (entry.target as HTMLElement).classList.toggle(
         "showAnimate",
@@ -202,10 +211,10 @@ setInterval(updateYear, 1000 * 60 * 60);
 // MODAL (CONTACT)
 // =======================================
 const modal = $("#modal-popup");
-const overlay = $(".overlay", modal || undefined);
+const overlay = modal ? $(".overlay", modal) : null;
 const closeBtn = $("#closeBtn");
 const okBtn = $("#okayBtn");
-const modalMessage = $(".modal-message", modal || undefined);
+const modalMessage = modal ? $(".modal-message", modal) : null;
 
 let autoCloseTimer: number | undefined;
 
@@ -221,7 +230,7 @@ function openModal(message: string, color: string, autoClose = false) {
 }
 
 function closeModal() {
-  modal?.classList.remove("action");
+  modal?.classList?.remove("action");
   if (autoCloseTimer) clearTimeout(autoCloseTimer);
 }
 
@@ -237,7 +246,7 @@ on(document, "keydown", (e: KeyboardEvent) => {
 // =======================================
 const contactForm = $("#contactForm") as HTMLFormElement | null;
 
-on(contactForm, "submit", async (e: Event) => {
+on(contactForm, "submit", async (e: SubmitEvent) => {
   e.preventDefault();
   if (!contactForm) return;
 
@@ -256,7 +265,7 @@ on(contactForm, "submit", async (e: Event) => {
     } else {
       openModal("❌ Oops! Something went wrong.", "red");
     }
-  } catch (err) {
+  } catch (err: unknown) {
     console.error(err);
     openModal("❌ Network error. Please try again.", "red");
   }
@@ -293,3 +302,44 @@ serviceCards.forEach((card) => {
     card.style.transform = "";
   });
 });
+
+// =======================================
+// DYNAMIC TYPING TEXT
+// =======================================
+const typingElement = $("#typing") as HTMLElement | null;
+
+// the typing sentences
+const sentences = [
+  "Bakare, .A. Olayemi",
+  "a Web Developer",
+  "also a Freelancer",
+];
+
+let sentenceIndex = 0;
+let charIndex = 0;
+
+// adding functionality to the dynamic text
+function type(): void {
+  if (!typingElement) return;
+
+  if (sentenceIndex < sentences.length) {
+    if (charIndex < sentences[sentenceIndex].length) {
+      typingElement.textContent =
+        (typingElement.textContent ?? "") +
+        sentences[sentenceIndex].charAt(charIndex);
+
+      charIndex++;
+      setTimeout(type, 100);
+    } else {
+      // pause before clearing and moving to next sentence
+      setTimeout(() => {
+        typingElement.textContent = "";
+        charIndex = 0;
+        sentenceIndex = (sentenceIndex + 1) % sentences.length; // loop
+        type();
+      }, 1000);
+    }
+  }
+}
+
+type();
